@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, Zap, Target, Globe } from 'lucide-react';
@@ -14,7 +15,6 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
 
   const content = {
     tr: {
-      name: 'Mücahit Özcan',
       title: 'DİJİTAL GÜÇLE',
       subtitle: 'STRATEJİK DÖNÜŞÜM',
       description: '13+ yıllık deneyimle, işletmeleri dijital çağda yeniden konumlandıran bir yol arkadaşı.',
@@ -26,7 +26,6 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
       ]
     },
     en: {
-      name: 'Mücahit Özcan',
       title: 'DIGITAL POWER',
       subtitle: 'STRATEGIC TRANSFORMATION',
       description: 'With 13+ years of experience, a companion who repositions businesses in the digital age.',
@@ -65,7 +64,7 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-cyan-900/30 overflow-hidden flex items-center font-exo">
+    <section id="home" className="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-cyan-900/30 overflow-hidden flex items-center font-display">
       {/* Animated Background Grid */}
       <div className="absolute inset-0 cyber-grid opacity-20"></div>
       
@@ -106,23 +105,23 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
           <div className="lg:w-1/2 text-center lg:text-left">
             {/* Main Title with Neon Effect */}
             <div className="relative mb-4">
-              <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none animate-hologram font-exo">
+              <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none animate-hologram font-display">
                 {content[language].title}
               </h1>
-              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-cyan-400/30 transform blur-sm animate-pulse font-exo">
+              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-cyan-400/30 transform blur-sm animate-pulse font-display">
                 {content[language].title}
               </div>
             </div>
 
             {/* Subtitle */}
             <div className="relative mb-8">
-              <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none font-exo">
+              <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none font-display">
                 {content[language].subtitle}
               </h2>
             </div>
             
             {/* Description */}
-            <p className="text-lg text-gray-300 mb-12 animate-fade-in delay-200 max-w-xl font-exo font-light">
+            <p className="text-lg text-gray-300 mb-12 animate-fade-in delay-200 max-w-xl font-sans font-light">
               {content[language].description}
             </p>
 
@@ -132,8 +131,8 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
                 <div key={index} className="flex items-center space-x-3 animate-slide-in" style={{animationDelay: `${0.3 + index * 0.1}s`}}>
                   <stat.icon className="w-8 h-8 text-cyan-400" />
                   <div>
-                    <div className="text-3xl font-bold text-white font-exo">{stat.number}</div>
-                    <div className="text-sm text-gray-400 uppercase font-exo font-medium">{stat.label}</div>
+                    <div className="text-3xl font-bold text-white font-display">{stat.number}</div>
+                    <div className="text-sm text-gray-400 uppercase font-mono font-medium">{stat.label}</div>
                   </div>
                 </div>
               ))}
@@ -143,14 +142,14 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
             <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
               <Button 
                 onClick={scrollToAbout}
-                className="relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-bold rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl font-exo"
+                className="relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-bold rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl font-display"
               >
                 {content[language].cta}
               </Button>
               <Button 
                 onClick={scrollToAbout}
                 variant="outline"
-                className="group relative px-6 py-3 border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-black font-bold text-sm tracking-wider uppercase transition-all duration-300 transform hover:scale-105 overflow-hidden font-exo"
+                className="group relative px-6 py-3 border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-black font-bold text-sm tracking-wider uppercase transition-all duration-300 transform hover:scale-105 overflow-hidden font-display"
               >
                 <span className="relative z-10">Learn More</span>
                 <div className="absolute inset-0 bg-white/10 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -188,9 +187,9 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
                 </div>
               </div>
 
-              {/* Name Below Image - Navigation Style - Made Bigger */}
+              {/* Name Below Image - Made Bigger */}
               <div className="relative group mt-8 text-center">
-                <div className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-wider font-exo">
+                <div className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-wider font-display">
                   MÜCAHİT ÖZCAN
                 </div>
                 <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:w-full transition-all duration-300"></div>
