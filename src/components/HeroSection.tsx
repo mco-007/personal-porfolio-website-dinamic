@@ -1,38 +1,45 @@
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { useEffect, useState } from 'react';
+import { ArrowDown, Zap, Target, Globe } from 'lucide-react';
 
 interface HeroSectionProps {
   language: 'tr' | 'en';
+  setLanguage: (lang: 'tr' | 'en') => void;
 }
 
-const HeroSection = ({ language }: HeroSectionProps) => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
+  const [isMounted, setIsMounted] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const content = {
     tr: {
-      title: 'MÜCAHİT',
-      subtitle: 'ÖZCAN',
-      tagline: 'DİJİTAL GÜÇLE',
-      description: 'Stratejik Dönüşüm',
-      longDescription: '13+ yıllık deneyimle, işletmeleri dijital çağda yeniden konumlandıran bir yol arkadaşı.',
-      primaryCta: 'PROJELER',
-      secondaryCta: 'İLETİŞİM',
-      slogan: 'DIGITAL TRANSFORMATION ARCHITECT'
+      title: 'DİJİTAL GÜÇLE',
+      subtitle: 'STRATEJİK DÖNÜŞÜM',
+      description: '13+ yıllık deneyimle, işletmeleri dijital çağda yeniden konumlandıran bir yol arkadaşı.',
+      cta: 'BAŞLAYALIM',
+      stats: [
+        { number: '13+', label: 'Yıl Deneyim', icon: Target },
+        { number: '50+', label: 'Proje', icon: Zap },
+        { number: '100%', label: 'Sürekli İyileştirme', icon: Globe }
+      ]
     },
     en: {
-      title: 'MÜCAHİT',
-      subtitle: 'ÖZCAN',
-      tagline: 'DIGITAL POWER',
-      description: 'Strategic Transformation',
-      longDescription: 'A companion who repositions businesses in the digital age with 13+ years of experience.',
-      primaryCta: 'PROJECTS',
-      secondaryCta: 'CONTACT',
-      slogan: 'DIGITAL TRANSFORMATION ARCHITECT'
+      title: 'DIGITAL POWER',
+      subtitle: 'STRATEGIC TRANSFORMATION',
+      description: 'With 13+ years of experience, a companion who repositions businesses in the digital age.',
+      cta: "LET'S START",
+      stats: [
+        { number: '13+', label: 'Years Experience', icon: Target },
+        { number: '50+', label: 'Projects', icon: Zap },
+        { number: '100%', label: 'Continuous Improvement', icon: Globe }
+      ]
     }
   };
 
   useEffect(() => {
+    setIsMounted(true);
+    const handleScroll = () => setScrollY(window.scrollY);
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ 
         x: (e.clientX / window.innerWidth) * 100,
@@ -40,44 +47,37 @@ const HeroSection = ({ language }: HeroSectionProps) => {
       });
     };
 
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <section 
-      id="home" 
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-black via-gray-900 to-purple-900"
-    >
+    <section id="home" className="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-cyan-900/30 overflow-hidden flex items-center">
       {/* Animated Background Grid */}
-      <div className="absolute inset-0 cyber-grid opacity-30"></div>
+      <div className="absolute inset-0 cyber-grid opacity-20"></div>
       
-      {/* Dynamic Floating Orbs */}
+      {/* Dynamic Starry Sky */}
       <div className="absolute inset-0">
-        {[...Array(8)].map((_, i) => (
+        {[...Array(150)].map((_, i) => (
           <div
             key={i}
-            className={`absolute w-32 h-32 rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 blur-xl animate-float`}
+            className="absolute w-1 h-1 rounded-full bg-white/50 animate-pulse"
             style={{
-              left: `${10 + i * 12}%`,
-              top: `${20 + (i % 3) * 30}%`,
-              animationDelay: `${i * 0.5}s`,
-              transform: `translateY(${scrollY * 0.1 * (i + 1)}px)`
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 2}s`,
+              animationDuration: `${1 + Math.random() * 3}s`
             }}
           ></div>
         ))}
@@ -85,7 +85,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
 
       {/* Interactive Mouse Follower */}
       <div 
-        className="absolute w-96 h-96 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl pointer-events-none"
+        className="absolute w-96 h-96 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-full blur-3xl pointer-events-none"
         style={{
           left: `${mousePosition.x}%`,
           top: `${mousePosition.y}%`,
@@ -94,146 +94,105 @@ const HeroSection = ({ language }: HeroSectionProps) => {
         }}
       ></div>
 
-      {/* Geometric Elements */}
-      <div className="absolute top-20 right-20 w-40 h-40 border-2 border-cyan-400/30 rotate-45 animate-spin-slow"></div>
-      <div className="absolute bottom-40 left-10 w-32 h-32 bg-gradient-to-r from-purple-500/20 to-transparent rotate-12 animate-bounce-slow"></div>
-      <div className="absolute top-1/2 right-10 w-2 h-48 bg-gradient-to-b from-cyan-500 to-transparent animate-pulse"></div>
+      {/* Floating Geometric Shapes */}
+      <div className="absolute top-10 left-20 w-32 h-32 border-2 border-cyan-400/30 rotate-45 animate-spin-slow"></div>
+      <div className="absolute bottom-20 right-32 w-24 h-24 bg-gradient-to-r from-purple-500/20 to-transparent rounded-full animate-bounce-slow"></div>
 
-      <div className="relative z-10 container mx-auto px-4 min-h-screen flex items-center">
-        <div className="w-full">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            {/* Left Side - Typography */}
-            <div className="space-y-10">
-              {/* Floating Badge */}
-              <div className="inline-block animate-fade-in">
-                <div className="glass rounded-full px-8 py-3 text-cyan-300 text-sm font-bold tracking-wider border border-cyan-500/30 animate-pulse-glow">
-                  {content[language].slogan}
-                </div>
-              </div>
+      {/* Wavy Divider */}
+      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 overflow-hidden">
+        <svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ height: '100%', width: '100%' }}>
+          <path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style={{ stroke: 'none', fill: 'rgba(255,255,255,0.05)' }}></path>
+        </svg>
+      </div>
 
-              {/* Main Title with Advanced 3D Effect */}
-              <div className="space-y-6 animate-fade-in delay-200">
-                <h1 className="text-8xl md:text-9xl font-black tracking-tighter relative">
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-blue-300 drop-shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                    {content[language].title}
-                  </span>
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-300 to-cyan-300 drop-shadow-2xl transform -skew-x-12 hover:skew-x-0 transition-transform duration-700">
-                    {content[language].subtitle}
-                  </span>
-                  {/* 3D Shadow Effect */}
-                  <div className="absolute inset-0 text-8xl md:text-9xl font-black tracking-tighter opacity-10 transform translate-x-2 translate-y-2 -z-10">
-                    <span className="block">{content[language].title}</span>
-                    <span className="block transform -skew-x-12">{content[language].subtitle}</span>
-                  </div>
-                </h1>
-              </div>
-
-              {/* Tagline with Dynamic Background */}
-              <div className="relative animate-fade-in delay-300">
-                <h2 className="text-3xl md:text-5xl font-bold text-cyan-300 tracking-widest relative z-10 animate-gradient-shift">
-                  {content[language].tagline}
-                </h2>
-                <div className="absolute -bottom-3 left-0 w-32 h-2 bg-gradient-to-r from-cyan-500 to-purple-500 animate-slide-in"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 blur-xl animate-pulse"></div>
-              </div>
-
-              {/* Description with Parallax Effect */}
-              <div className="space-y-6 animate-fade-in delay-500">
-                <p className="text-2xl md:text-3xl text-gray-200 font-light transform hover:translate-x-2 transition-transform duration-300">
-                  {content[language].description}
-                </p>
-                <p className="text-xl text-gray-400 max-w-lg leading-relaxed transform hover:translate-x-4 transition-transform duration-500">
-                  {content[language].longDescription}
-                </p>
-              </div>
-
-              {/* Advanced CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-8 animate-fade-in delay-700">
-                <Button 
-                  onClick={() => scrollToSection('projects')}
-                  className="group relative px-10 py-6 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-xl rounded-none skew-x-[-15deg] transform hover:scale-110 hover:rotate-1 transition-all duration-500 shadow-2xl hover:shadow-cyan-500/50 overflow-hidden"
-                >
-                  <span className="skew-x-[15deg] block relative z-10">{content[language].primaryCta}</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                  <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded blur opacity-0 group-hover:opacity-75 transition duration-500"></div>
-                </Button>
-                
-                <Button 
-                  onClick={() => scrollToSection('contact')}
-                  variant="outline"
-                  className="group px-10 py-6 border-3 border-purple-500 text-purple-300 hover:bg-purple-500 hover:text-white font-bold text-xl rounded-none transform hover:scale-110 hover:-rotate-1 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/50 relative overflow-hidden"
-                >
-                  <span className="relative z-10">{content[language].secondaryCta}</span>
-                  <div className="ml-3 transform group-hover:translate-x-3 group-hover:rotate-12 transition-transform duration-500 inline-block">→</div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-bottom"></div>
-                </Button>
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center justify-between min-h-screen py-20">
+          {/* Left Content */}
+          <div className="lg:w-1/2 text-center lg:text-left mb-16 lg:mb-0">
+            {/* Main Title with Neon Effect */}
+            <div className="relative mb-6">
+              <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none animate-hologram">
+                {content[language].title}
+              </h1>
+              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-cyan-400/30 transform blur-sm animate-pulse">
+                {content[language].title}
               </div>
             </div>
 
-            {/* Right Side - Professional Photo with Advanced Effects */}
-            <div className="relative flex justify-center items-center animate-fade-in delay-1000">
-              <div className="relative group">
-                {/* Multiple Rotating Rings */}
-                <div className="absolute inset-0 w-96 h-96 border-2 border-cyan-500/30 rounded-full animate-spin-slow"></div>
-                <div className="absolute inset-4 w-88 h-88 border border-purple-500/20 rounded-full animate-spin-slow" style={{animationDirection: 'reverse', animationDuration: '12s'}}></div>
-                
-                {/* Dynamic Glowing Background */}
-                <div className="absolute inset-0 w-80 h-80 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 rounded-full blur-3xl animate-pulse-glow"></div>
-                
-                {/* Main Photo Container with Updated Image */}
-                <div className="relative w-72 h-72 mx-auto">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full p-1 animate-gradient-shift">
-                    <img 
-                      src="/lovable-uploads/0d6850e1-a3b2-4a5c-b077-d6c7c098e57b.png" 
-                      alt="Mücahit Özcan - Dijital Dönüşüm Uzmanı"
-                      className="w-full h-full object-cover rounded-full transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-700 shadow-2xl"
-                    />
-                  </div>
-                  
-                  {/* Floating Achievement Badges */}
-                  <div className="absolute -top-6 -right-6 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-full text-sm font-bold shadow-2xl animate-bounce-slow transform hover:scale-110 transition-transform duration-300">
-                    13+ YIL
-                  </div>
-                  <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-purple-500 to-pink-600 text-white px-6 py-3 rounded-full text-sm font-bold shadow-2xl animate-bounce-slow delay-300 transform hover:scale-110 transition-transform duration-300">
-                    UZMAN
-                  </div>
-                  <div className="absolute top-1/2 -right-12 bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-full text-xs font-bold shadow-xl animate-float delay-500 transform hover:scale-110 transition-transform duration-300">
-                    CRM
+            {/* Subtitle */}
+            <div className="relative mb-8">
+              <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none">
+                {content[language].subtitle}
+              </h2>
+            </div>
+            
+            {/* Description */}
+            <p className="text-lg text-gray-300 mb-12 animate-fade-in delay-200">
+              {content[language].description}
+            </p>
+
+            {/* Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {content[language].stats.map((stat, index) => (
+                <div key={index} className="flex items-center space-x-3 animate-slide-in" style={{animationDelay: `${0.3 + index * 0.1}s`}}>
+                  <stat.icon className="w-8 h-8 text-cyan-400" />
+                  <div>
+                    <div className="text-3xl font-bold text-white">{stat.number}</div>
+                    <div className="text-sm text-gray-400 uppercase">{stat.label}</div>
                   </div>
                 </div>
+              ))}
+            </div>
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+              <Button 
+                onClick={scrollToAbout}
+                className="relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-bold rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl"
+              >
+                {content[language].cta}
+              </Button>
+              <Button 
+                onClick={scrollToAbout}
+                variant="outline"
+                className="group relative px-6 py-3 border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-black font-bold text-sm tracking-wider uppercase transition-all duration-300 transform hover:scale-105 overflow-hidden"
+              >
+                <span className="relative z-10">Learn More</span>
+                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </Button>
+            </div>
+          </div>
 
-                {/* Animated Particles */}
-                {[...Array(6)].map((_, i) => (
-                  <div
-                    key={i}
-                    className={`absolute w-2 h-2 bg-cyan-400 rounded-full animate-ping`}
-                    style={{
-                      top: `${20 + i * 15}%`,
-                      left: `${10 + (i % 2) * 80}%`,
-                      animationDelay: `${i * 0.3}s`
-                    }}
-                  ></div>
-                ))}
-
-                {/* Geometric Accents */}
-                <div className="absolute top-10 -right-16 w-6 h-24 bg-gradient-to-b from-cyan-500 to-transparent animate-pulse delay-200"></div>
-                <div className="absolute -bottom-16 -left-12 w-24 h-6 bg-gradient-to-r from-purple-500 to-transparent animate-pulse delay-700"></div>
-                <div className="absolute top-1/3 -left-20 w-8 h-8 border-2 border-pink-500 rotate-45 animate-spin-slow"></div>
+          {/* Right Content */}
+          <div className="lg:w-1/2 flex justify-center lg:justify-end">
+            <div className="relative group">
+              {/* 3D Floating Elements */}
+              <div className="absolute -top-20 -left-20 w-48 h-48 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-full blur-2xl animate-float"></div>
+              <div className="absolute bottom-10 right-10 w-32 h-32 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full blur-2xl animate-float"></div>
+              
+              {/* Central Image */}
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=400&fit=crop"
+                  alt="Hero Image"
+                  className="rounded-3xl shadow-2xl transform transition-all duration-500 group-hover:scale-105"
+                />
+                {/* Border Glow */}
+                <div className="absolute inset-0 rounded-3xl border-2 border-cyan-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Enhanced Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center animate-bounce group cursor-pointer" onClick={() => scrollToSection('about')}>
-          <div className="w-2 h-20 bg-gradient-to-b from-cyan-500 via-purple-500 to-transparent mx-auto mb-3 rounded-full group-hover:h-24 transition-all duration-300"></div>
-          <p className="text-cyan-300 text-sm font-bold tracking-wider group-hover:text-white transition-colors duration-300">SCROLL</p>
-          <div className="mt-2 w-4 h-4 border-r-2 border-b-2 border-cyan-400 transform rotate-45 animate-pulse"></div>
-        </div>
       </div>
 
-      {/* Transition Effect to Next Section */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent"></div>
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-400 animate-bounce-slow cursor-pointer" onClick={scrollToAbout}>
+        <ArrowDown className="w-6 h-6" />
+      </div>
+
+      {/* Section Transition Effect */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-gray-900 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-cyan-500 to-transparent animate-pulse"></div>
     </section>
   );
 };

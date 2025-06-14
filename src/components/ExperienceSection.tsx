@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
@@ -14,7 +13,7 @@ const ExperienceSection = ({ language }: ExperienceSectionProps) => {
   const content = {
     tr: {
       title: 'DENEYİMLER',
-      subtitle: 'PROFESSIONAL JOURNEY',
+      subtitle: 'PROFESYONEL YOLCULUK',
       cta: 'PROJELERİMİ GÖR',
       experiences: [
         {

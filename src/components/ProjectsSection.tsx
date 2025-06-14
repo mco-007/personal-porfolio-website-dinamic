@@ -13,7 +13,7 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
   const content = {
     tr: {
       title: 'PROJELER',
-      subtitle: 'DIGITAL MASTERPIECES',
+      subtitle: 'DİJİTAL BAŞYAPITLAR',
       projects: [
         {
           name: 'Beautiq – Güzellik Salonu Yönetimi',

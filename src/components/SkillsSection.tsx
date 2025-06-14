@@ -13,7 +13,7 @@ const SkillsSection = ({ language }: SkillsSectionProps) => {
   const content = {
     tr: {
       title: 'YETENEKLER',
-      subtitle: 'TEKNİK HAKIMYET',
+      subtitle: 'TEKNİK HÂKİMİYET',
       cta: 'PROJE FİKRİNİZ Mİ VAR?',
       skills: [
         {
@@ -188,7 +188,7 @@ const SkillsSection = ({ language }: SkillsSectionProps) => {
           </p>
         </div>
         
-        {/* Skills Grid with Hexagonal Layout */}
+        {/* Skills Grid with Light Hover Effects */}
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             {content[language].skills.map((skill, index) => (
@@ -261,9 +261,9 @@ const SkillsSection = ({ language }: SkillsSectionProps) => {
                     </div>
                   </div>
 
-                  {/* Background Effects - Much More Transparent */}
-                  <div className={`absolute inset-0 bg-gradient-to-r ${skill.color.replace('500', '500/5')} opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-lg`}></div>
-                  <div className={`absolute -inset-2 bg-gradient-to-r ${skill.color.replace('500', '500/3')} rounded-lg blur opacity-0 group-hover:opacity-30 transition duration-700`}></div>
+                  {/* Background Effects - Ultra Light */}
+                  <div className={`absolute inset-0 bg-gradient-to-r ${skill.color.replace('500', '500/1')} opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-lg`}></div>
+                  <div className={`absolute -inset-2 bg-gradient-to-r ${skill.color.replace('500', '500/1')} rounded-lg blur opacity-0 group-hover:opacity-20 transition duration-700`}></div>
                   
                   {/* Corner Accents */}
                   <div className={`absolute top-2 right-2 w-2 h-2 bg-gradient-to-r ${skill.color} rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-500`}></div>
