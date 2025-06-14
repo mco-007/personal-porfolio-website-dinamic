@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -31,6 +32,8 @@ const ContactSection = ({ language }: ContactSectionProps) => {
       message: 'Mesaj',
       send: 'MESAJ GÖNDER',
       myEmail: 'mcozcn@gmail.com',
+      errorMessage: 'Lütfen tüm alanları doldurun',
+      successMessage: 'Mesajınız başarıyla gönderildi!',
       contactInfo: {
         email: {
           title: 'E-posta',
@@ -54,6 +57,8 @@ const ContactSection = ({ language }: ContactSectionProps) => {
       message: 'Message',
       send: 'SEND MESSAGE',
       myEmail: 'mcozcn@gmail.com',
+      errorMessage: 'Please fill in all fields',
+      successMessage: 'Your message has been sent successfully!',
       contactInfo: {
         email: {
           title: 'Email',
