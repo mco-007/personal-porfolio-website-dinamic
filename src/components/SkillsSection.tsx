@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
@@ -188,28 +189,71 @@ const SkillsSection = ({ language }: SkillsSectionProps) => {
           </p>
         </div>
         
-        {/* Skills Grid with Original Hover Effects */}
+        {/* Skills Grid with Unique Hover Effects */}
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             {content[language].skills.map((skill, index) => (
-              <Card key={index} className={`glass border-2 border-orange-500/30 backdrop-blur-xl hover:border-orange-500/80 transition-all duration-300 group cursor-pointer transform hover:translate-y-2 hover:shadow-2xl hover:shadow-orange-500/25 ${
-                index % 2 === 0 ? 'lg:-mt-8' : 'lg:mt-8'
-              }`}>
-                <CardContent className="p-10 text-center relative z-10 overflow-hidden">
-                  {/* Skill Icon with Refined Animation */}
-                  <div className="relative mb-8">
-                    <div className={`w-24 h-24 mx-auto bg-gradient-to-r ${skill.color} rounded-full flex items-center justify-center text-4xl transform group-hover:rotate-12 transition-all duration-300 shadow-2xl`}>
-                      {skill.icon}
+              <Card 
+                key={index} 
+                className={`
+                  glass border-2 border-orange-500/30 backdrop-blur-xl 
+                  transition-all duration-700 ease-out
+                  group cursor-pointer 
+                  relative overflow-hidden
+                  hover:border-orange-400/60
+                  hover:shadow-[0_20px_80px_rgba(251,146,60,0.3)]
+                  hover:-translate-y-4
+                  hover:rotate-1
+                  hover:scale-[1.02]
+                  ${index % 2 === 0 ? 'lg:-mt-8' : 'lg:mt-8'}
+                `}
+              >
+                {/* Animated Background Pattern */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700">
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-red-500/10"></div>
+                  <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23f97316" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] animate-pulse"></div>
+                </div>
+
+                {/* Floating Light Effect */}
+                <div className="absolute -top-4 -right-4 w-8 h-8 bg-orange-400/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:animate-ping"></div>
+                <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-red-400/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200"></div>
+
+                <CardContent className="p-10 text-center relative z-10">
+                  {/* Skill Icon with Unique Animation */}
+                  <div className="relative mb-8 group-hover:animate-bounce">
+                    <div className={`
+                      w-24 h-24 mx-auto bg-gradient-to-r ${skill.color} rounded-full 
+                      flex items-center justify-center text-4xl 
+                      transition-all duration-700 ease-out
+                      shadow-2xl
+                      group-hover:shadow-[0_0_40px_rgba(251,146,60,0.6)]
+                      group-hover:rotate-[360deg]
+                      group-hover:scale-110
+                      relative overflow-hidden
+                    `}>
+                      {/* Icon Shimmer Effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
+                      <span className="relative z-10">{skill.icon}</span>
+                    </div>
+                    
+                    {/* Orbiting Dots */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                      <div className="absolute top-1/2 left-1/2 w-32 h-32 -translate-x-1/2 -translate-y-1/2">
+                        <div className="absolute top-0 left-1/2 w-2 h-2 bg-orange-400 rounded-full transform -translate-x-1/2 animate-spin origin-center" style={{ animationDuration: '3s' }}></div>
+                        <div className="absolute bottom-0 left-1/2 w-2 h-2 bg-red-400 rounded-full transform -translate-x-1/2 animate-spin origin-center" style={{ animationDuration: '4s', animationDirection: 'reverse' }}></div>
+                        <div className="absolute top-1/2 left-0 w-2 h-2 bg-yellow-400 rounded-full transform -translate-y-1/2 animate-spin origin-center" style={{ animationDuration: '5s' }}></div>
+                        <div className="absolute top-1/2 right-0 w-2 h-2 bg-pink-400 rounded-full transform -translate-y-1/2 animate-spin origin-center" style={{ animationDuration: '3.5s', animationDirection: 'reverse' }}></div>
+                      </div>
                     </div>
                   </div>
                   
-                  {/* Skill Name - Always Visible */}
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-orange-300 transition-colors duration-300 font-display">
+                  {/* Skill Name with Typing Effect */}
+                  <h3 className="text-2xl font-bold text-white mb-4 transition-all duration-500 group-hover:text-orange-300 group-hover:tracking-wider font-display">
                     {skill.name}
                   </h3>
                   
-                  {/* Description - Always Visible */}
-                  <p className="text-gray-300 text-sm mb-8 leading-relaxed group-hover:text-white transition-colors duration-300 font-sans">
+                  {/* Description with Slide Animation */}
+                  <p className="text-gray-300 text-sm mb-8 leading-relaxed transition-all duration-500 group-hover:text-white group-hover:transform group-hover:translate-y-[-2px] font-sans">
                     {skill.description}
                   </p>
                   
@@ -217,23 +261,41 @@ const SkillsSection = ({ language }: SkillsSectionProps) => {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors duration-300 font-mono">Yetkinlik</span>
-                      <span className={`text-lg font-bold bg-gradient-to-r ${skill.color} bg-clip-text text-transparent font-display`}>
+                      <span className={`text-lg font-bold bg-gradient-to-r ${skill.color} bg-clip-text text-transparent font-display group-hover:animate-pulse`}>
                         {skill.level}%
                       </span>
                     </div>
                     
-                    {/* Progress Bar - Enhanced Design */}
-                    <div className="relative w-full h-3 bg-gray-800/50 rounded-full overflow-hidden backdrop-blur-sm border border-gray-700/50">
+                    {/* Progress Bar with Particle Effect */}
+                    <div className="relative w-full h-3 bg-gray-800/50 rounded-full overflow-hidden backdrop-blur-sm border border-gray-700/50 group-hover:border-orange-400/50 transition-all duration-500">
                       <div 
-                        className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out relative`}
+                        className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out relative group-hover:animate-pulse`}
                         style={{ width: `${skill.level}%` }}
                       >
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-data-stream"></div>
+                        {/* Animated Data Stream */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 animate-data-stream"></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent rounded-full"></div>
+                        
+                        {/* Particle Trail Effect */}
+                        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                          <div className="flex space-x-1">
+                            {[...Array(3)].map((_, i) => (
+                              <div 
+                                key={i}
+                                className="w-1 h-1 bg-white rounded-full animate-pulse"
+                                style={{ animationDelay: `${i * 0.2}s` }}
+                              ></div>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </CardContent>
+
+                {/* Corner Accent Lines */}
+                <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-orange-400/0 group-hover:border-orange-400/60 transition-all duration-500"></div>
+                <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-orange-400/0 group-hover:border-orange-400/60 transition-all duration-500"></div>
               </Card>
             ))}
           </div>

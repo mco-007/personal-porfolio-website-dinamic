@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -19,8 +20,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'sans': ['Inter', 'system-ui', 'sans-serif'],
-				'display': ['Space Grotesk', 'system-ui', 'sans-serif'],
+				'sans': ['Rebond Grotesque', 'Inter', 'system-ui', 'sans-serif'],
+				'display': ['Rebond Grotesque', 'Space Grotesk', 'system-ui', 'sans-serif'],
 				'mono': ['JetBrains Mono', 'monospace'],
 			},
 			colors: {
