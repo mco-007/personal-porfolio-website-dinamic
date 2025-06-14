@@ -105,20 +105,6 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
         <div className="flex flex-col lg:flex-row items-center justify-between min-h-screen py-20 gap-16">
           {/* Left Content */}
           <div className="lg:w-1/2 text-center lg:text-left">
-            {/* Name with sophisticated design */}
-            <div className="relative mb-8">
-              <div className="inline-block relative">
-                <h3 className="text-3xl md:text-4xl font-light text-white/90 tracking-[0.2em] uppercase mb-2 relative">
-                  {content[language].name}
-                  <div className="absolute -bottom-2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
-                </h3>
-                {/* Subtle glow effect */}
-                <div className="absolute inset-0 text-3xl md:text-4xl font-light text-cyan-400/20 blur-sm">
-                  {content[language].name}
-                </div>
-              </div>
-            </div>
-
             {/* Main Title with Neon Effect */}
             <div className="relative mb-4">
               <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none animate-hologram">
@@ -190,7 +176,7 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
                 {/* Image */}
                 <div className="relative w-80 h-80 md:w-96 md:h-96">
                   <img 
-                    src="/lovable-uploads/1e6e526d-3c76-4238-b838-097368cf673b.png"
+                    src="/lovable-uploads/0d6850e1-a3b2-4a5c-b077-d6c7c098e57b.png"
                     alt="Mücahit Özcan"
                     className="w-full h-full object-cover rounded-full relative z-10 transform transition-all duration-700 group-hover:scale-105"
                   />
@@ -201,6 +187,14 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
                   {/* Pulse effect */}
                   <div className="absolute inset-0 rounded-full border-2 border-cyan-400/50 animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
+              </div>
+
+              {/* Name Below Image - Navigation Style */}
+              <div className="relative group mt-8 text-center">
+                <div className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-wider">
+                  MÜCAHİT ÖZCAN
+                </div>
+                <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:w-full transition-all duration-300"></div>
               </div>
 
               {/* Floating tech icons */}
