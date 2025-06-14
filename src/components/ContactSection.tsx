@@ -1,9 +1,9 @@
-
-import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useEffect, useState } from 'react';
+import { Linkedin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 interface ContactSectionProps {
@@ -23,31 +23,49 @@ const ContactSection = ({ language }: ContactSectionProps) => {
   const content = {
     tr: {
       title: 'İLETİŞİM',
-      subtitle: 'CONNECT WITH ME',
-      subtitle2: 'Dijital dönüşüm yolculuğunuz için bana ulaşın!',
+      subtitle: 'LET\'S CREATE SOMETHING AMAZING',
+      formTitle: 'Projenizi Konuşalım',
+      formSubtitle: 'Dijital dönüşüm yolculuğunuzda size rehberlik edebilirim',
+      name: 'İsim',
       email: 'E-posta',
-      form: {
-        name: 'Adınız',
-        email: 'E-posta Adresiniz',
-        message: 'Mesajınız',
-        submit: 'MESAJ GÖNDER'
-      },
-      successMessage: 'Mesajınız başarıyla gönderildi!',
-      errorMessage: 'Lütfen tüm alanları doldurun.'
+      message: 'Mesaj',
+      send: 'MESAJ GÖNDER',
+      myEmail: 'mcozcn@gmail.com',
+      contactInfo: {
+        email: {
+          title: 'E-posta',
+          value: 'mcozcn@gmail.com',
+          description: 'Projeleriniz için benimle iletişime geçin'
+        },
+        linkedin: {
+          title: 'LinkedIn',
+          value: 'Profesyonel Ağ',
+          description: 'Profesyonel bağlantı kuralım'
+        }
+      }
     },
     en: {
       title: 'CONTACT',
-      subtitle: 'CONNECT WITH ME',
-      subtitle2: 'Contact me for your digital transformation journey!',
+      subtitle: 'LET\'S CREATE SOMETHING AMAZING',
+      formTitle: 'Let\'s Discuss Your Project',
+      formSubtitle: 'I can guide you on your digital transformation journey',
+      name: 'Name',
       email: 'Email',
-      form: {
-        name: 'Your Name',
-        email: 'Your Email',
-        message: 'Your Message',
-        submit: 'SEND MESSAGE'
-      },
-      successMessage: 'Your message has been sent successfully!',
-      errorMessage: 'Please fill in all fields.'
+      message: 'Message',
+      send: 'SEND MESSAGE',
+      myEmail: 'mcozcn@gmail.com',
+      contactInfo: {
+        email: {
+          title: 'Email',
+          value: 'mcozcn@gmail.com',
+          description: 'Get in touch for your projects'
+        },
+        linkedin: {
+          title: 'LinkedIn',
+          value: 'Professional Network',
+          description: 'Let\'s connect professionally'
+        }
+      }
     }
   };
 
@@ -98,7 +116,7 @@ const ContactSection = ({ language }: ContactSectionProps) => {
   };
 
   return (
-    <section id="contact" className="relative py-40 bg-gradient-to-br from-black via-gray-900 to-violet-900/30 overflow-hidden">
+    <section id="contact" className="relative py-40 bg-gradient-to-br from-black via-gray-900 to-blue-900/30 overflow-hidden">
       {/* Animated Background Grid */}
       <div className="absolute inset-0 cyber-grid opacity-20"></div>
       
@@ -148,148 +166,93 @@ const ContactSection = ({ language }: ContactSectionProps) => {
           <p className="text-3xl md:text-4xl font-light text-violet-300 tracking-widest animate-fade-in delay-200 neon-purple">
             {content[language].subtitle}
           </p>
-          <p className="text-xl text-gray-400 mt-6 animate-fade-in delay-300">
-            {content[language].subtitle2}
-          </p>
         </div>
         
-        {/* Contact Grid with Advanced 3D Cards */}
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Contact Info Card */}
-            <Card className="glass border-2 border-violet-500/30 backdrop-blur-xl hover:border-violet-500/60 transition-all duration-700 group cursor-pointer transform hover:scale-110 hover:-translate-y-8 hover:rotate-2 modern-card perspective-1000">
-              <CardContent className="p-12 relative z-10">
-                <h3 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-violet-300 mb-10 group-hover:from-violet-400 group-hover:to-pink-400 transition-all duration-500 transform group-hover:scale-110">
-                  {content[language].email}
-                </h3>
-                
-                {/* Email Link with Advanced Hover */}
-                <div className="space-y-8 mb-12">
-                  <a 
-                    href="mailto:mco@mucahitozcan.com"
-                    className="flex items-center text-violet-400 hover:text-white transition-all duration-500 group/email transform hover:scale-110 hover:translate-x-4"
-                  >
-                    <div className="text-5xl mr-6 transform group-hover/email:scale-125 group-hover/email:rotate-12 transition-all duration-500">📧</div>
-                    <div>
-                      <span className="text-2xl font-bold neon-purple">mco@mucahitozcan.com</span>
-                      <div className="w-0 h-1 bg-gradient-to-r from-violet-500 to-pink-500 group-hover/email:w-full transition-all duration-500"></div>
+        {/* Contact Grid */}
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-20 items-start">
+            {/* Contact Information */}
+            <div className="space-y-12">
+              {/* Form Card */}
+              <Card className="glass border-2 border-cyan-500/30 backdrop-blur-xl hover:border-cyan-500/60 transition-all duration-700 group">
+                <CardContent className="p-12">
+                  <div className="mb-10">
+                    <h3 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-300 mb-4">
+                      {content[language].formTitle}
+                    </h3>
+                    <p className="text-gray-400 text-lg">
+                      {content[language].formSubtitle}
+                    </p>
+                  </div>
+
+                  <form onSubmit={handleSubmit} className="space-y-8">
+                    <div className="space-y-6">
+                      <Input 
+                        placeholder={content[language].name}
+                        className="glass border-blue-500/30 text-white placeholder-gray-400 h-14 text-lg"
+                      />
+                      <Input 
+                        type="email"
+                        placeholder={content[language].email}
+                        className="glass border-blue-500/30 text-white placeholder-gray-400 h-14 text-lg"
+                      />
+                      <Textarea 
+                        placeholder={content[language].message}
+                        rows={6}
+                        className="glass border-blue-500/30 text-white placeholder-gray-400 text-lg resize-none"
+                      />
                     </div>
-                  </a>
-                </div>
-                
-                {/* Contact Image with Effects */}
-                <div className="relative group/image">
-                  <img 
-                    src="https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=400&h=300&fit=crop"
-                    alt="İletişim"
-                    className="w-full h-64 object-cover rounded-2xl transform group-hover/image:scale-110 group-hover/image:rotate-3 transition-all duration-1000 shadow-2xl"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-violet-500/50 to-transparent rounded-2xl opacity-0 group-hover/image:opacity-100 transition-opacity duration-500"></div>
-                  
-                  {/* Floating Elements */}
-                  {[...Array(8)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="absolute w-2 h-2 bg-violet-400 rounded-full opacity-0 group-hover/image:opacity-100 animate-particle-float"
-                      style={{
-                        left: `${10 + i * 10}%`,
-                        top: `${15 + (i % 3) * 25}%`,
-                        animationDelay: `${i * 0.15}s`
-                      }}
-                    ></div>
-                  ))}
-                </div>
-
-                {/* Background Effects */}
-                <div className="absolute inset-0 bg-gradient-to-r from-violet-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-lg"></div>
-                <div className="absolute -inset-2 bg-gradient-to-r from-violet-500/20 to-pink-500/20 rounded-lg blur opacity-0 group-hover:opacity-75 transition duration-700"></div>
-              </CardContent>
-            </Card>
-            
-            {/* Contact Form Card */}
-            <Card className="glass border-2 border-violet-500/30 backdrop-blur-xl hover:border-violet-500/60 transition-all duration-700 group cursor-pointer transform hover:scale-110 hover:-translate-y-8 hover:-rotate-2 modern-card perspective-1000">
-              <CardContent className="p-12 relative z-10">
-                <form onSubmit={handleSubmit} className="space-y-8">
-                  {/* Name Input */}
-                  <div className="relative group/input">
-                    <label htmlFor="name" className="block text-lg font-bold text-gray-300 mb-3 group-hover/input:text-violet-400 transition-colors duration-300">
-                      {content[language].form.name}
-                    </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full bg-gray-800/50 border-2 border-violet-500/30 rounded-xl px-6 py-4 text-white focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all duration-500 hover:border-violet-500/50 transform hover:scale-105"
-                    />
-                    <div className="absolute -bottom-1 left-0 w-0 h-1 bg-gradient-to-r from-violet-500 to-pink-500 group-hover/input:w-full transition-all duration-500"></div>
-                  </div>
-                  
-                  {/* Email Input */}
-                  <div className="relative group/input">
-                    <label htmlFor="email" className="block text-lg font-bold text-gray-300 mb-3 group-hover/input:text-violet-400 transition-colors duration-300">
-                      {content[language].form.email}
-                    </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full bg-gray-800/50 border-2 border-violet-500/30 rounded-xl px-6 py-4 text-white focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all duration-500 hover:border-violet-500/50 transform hover:scale-105"
-                    />
-                    <div className="absolute -bottom-1 left-0 w-0 h-1 bg-gradient-to-r from-violet-500 to-pink-500 group-hover/input:w-full transition-all duration-500"></div>
-                  </div>
-                  
-                  {/* Message Textarea */}
-                  <div className="relative group/input">
-                    <label htmlFor="message" className="block text-lg font-bold text-gray-300 mb-3 group-hover/input:text-violet-400 transition-colors duration-300">
-                      {content[language].form.message}
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      rows={6}
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full bg-gray-800/50 border-2 border-violet-500/30 rounded-xl px-6 py-4 text-white focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all duration-500 hover:border-violet-500/50 transform hover:scale-105 resize-none"
-                    />
-                    <div className="absolute -bottom-1 left-0 w-0 h-1 bg-gradient-to-r from-violet-500 to-pink-500 group-hover/input:w-full transition-all duration-500"></div>
-                  </div>
-                  
-                  {/* Submit Button */}
-                  <Button 
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-violet-500 to-pink-600 hover:from-violet-400 hover:to-pink-500 text-white font-black py-6 text-xl transform hover:scale-110 hover:rotate-1 transition-all duration-500 shadow-2xl hover:shadow-violet-500/50 overflow-hidden group/btn skew-x-[-10deg]"
-                  >
-                    <span className="skew-x-[10deg] block relative z-10">{content[language].form.submit}</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500 origin-left"></div>
-                    <div className="absolute -inset-1 bg-gradient-to-r from-violet-400 to-pink-500 rounded blur opacity-0 group-hover/btn:opacity-75 transition duration-500"></div>
                     
-                    {/* Button Particles */}
-                    {[...Array(6)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="absolute w-1 h-1 bg-white rounded-full opacity-0 group-hover/btn:opacity-100 animate-ping"
-                        style={{
-                          left: `${15 + i * 12}%`,
-                          top: `${30 + (i % 2) * 40}%`,
-                          animationDelay: `${i * 0.1}s`
-                        }}
-                      ></div>
-                    ))}
-                  </Button>
-                </form>
+                    <Button 
+                      type="submit"
+                      className="w-full bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-400 hover:to-cyan-500 text-white font-bold py-6 text-xl skew-x-[-15deg] transform hover:scale-105 hover:rotate-1 transition-all duration-500 shadow-2xl hover:shadow-blue-500/50 overflow-hidden group"
+                    >
+                      <span className="skew-x-[15deg] block relative z-10">{content[language].send}</span>
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
 
-                {/* Form Background Effects */}
-                <div className="absolute inset-0 bg-gradient-to-r from-violet-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-lg"></div>
-                <div className="absolute -inset-2 bg-gradient-to-r from-violet-500/20 to-pink-500/20 rounded-lg blur opacity-0 group-hover:opacity-75 transition duration-700"></div>
-              </CardContent>
-            </Card>
+            {/* Contact Details */}
+            <div className="space-y-12">
+              {/* Email Card */}
+              <Card className="glass border-2 border-cyan-500/30 backdrop-blur-xl hover:border-cyan-500/60 transition-all duration-700 group cursor-pointer transform hover:scale-105 hover:-translate-y-4">
+                <CardContent className="p-10 text-center">
+                  <div className="text-6xl mb-8 transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-700">
+                    📧
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors duration-500">
+                    {content[language].contactInfo.email.title}
+                  </h3>
+                  <p className="text-xl text-cyan-400 mb-4 font-mono">
+                    {content[language].contactInfo.email.value}
+                  </p>
+                  <p className="text-gray-400">
+                    {content[language].contactInfo.email.description}
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* LinkedIn Card */}
+              <Card className="glass border-2 border-blue-500/30 backdrop-blur-xl hover:border-blue-500/60 transition-all duration-700 group cursor-pointer transform hover:scale-105 hover:-translate-y-4"
+                    onClick={() => window.open('https://www.linkedin.com/in/mcozcn/', '_blank')}>
+                <CardContent className="p-10 text-center">
+                  <div className="flex justify-center mb-8">
+                    <Linkedin size={64} className="text-blue-400 transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-700" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-500">
+                    {content[language].contactInfo.linkedin.title}
+                  </h3>
+                  <p className="text-xl text-blue-400 mb-4">
+                    {content[language].contactInfo.linkedin.value}
+                  </p>
+                  <p className="text-gray-400">
+                    {content[language].contactInfo.linkedin.description}
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ const AboutSection = ({ language }: AboutSectionProps) => {
   const content = {
     tr: {
       title: 'HAKKIMDA',
-      subtitle: 'DİJİTAL MİMAR',
+      subtitle: 'DİJİTAL STRATEJİ UZMANI',
       description1: 'Dijital strateji, proje yönetimi ve yaratıcı çözümler alanında 13+ yıllık deneyime sahip bir uzmanım. Teknoloji ile insan odaklı yaklaşımları harmanlayarak, işletmelerin dijital dönüşüm süreçlerinde güvenilir bir rehber olmayı amaçlıyorum.',
       description2: 'CRM sistemlerinden dijital pazarlama stratejilerine, mobil uygulamalardan web tasarımına kadar geniş bir yelpazede hizmet veriyorum. Her projede ölçülebilir sonuçlar elde etmeye ve müşteri memnuniyetini en üst düzeyde tutmaya odaklanırım.',
       description3: 'Sürekli öğrenme ve gelişim felsefesiyle, sektördeki en güncel trendleri takip ederek müşterilerime en iyi çözümleri sunmaya devam ediyorum.',
@@ -23,7 +23,7 @@ const AboutSection = ({ language }: AboutSectionProps) => {
         { number: '13+', label: 'Yıl Deneyim' },
         { number: '50+', label: 'Proje' },
         { number: '95%', label: 'Müşteri Memnuniyeti' },
-        { number: '24/7', label: 'Destek' }
+        { number: '∞', label: 'Sürekli İyileştirme' }
       ],
       strengths: {
         strategic: {
@@ -50,7 +50,7 @@ const AboutSection = ({ language }: AboutSectionProps) => {
     },
     en: {
       title: 'ABOUT ME',
-      subtitle: 'DIGITAL ARCHITECT',
+      subtitle: 'DIGITAL STRATEGY EXPERT',
       description1: 'I am an expert with 13+ years of experience in digital strategy, project management, and creative solutions. I aim to be a trusted guide for businesses in their digital transformation processes by blending technology with human-centered approaches.',
       description2: 'I provide services across a wide range, from CRM systems to digital marketing strategies, from mobile applications to web design. In every project, I focus on achieving measurable results and maintaining the highest level of customer satisfaction.',
       description3: 'With a philosophy of continuous learning and development, I follow the latest trends in the industry and continue to provide the best solutions to my clients.',
@@ -59,7 +59,7 @@ const AboutSection = ({ language }: AboutSectionProps) => {
         { number: '13+', label: 'Years Experience' },
         { number: '50+', label: 'Projects' },
         { number: '95%', label: 'Client Satisfaction' },
-        { number: '24/7', label: 'Support' }
+        { number: '∞', label: 'Continuous Improvement' }
       ],
       strengths: {
         strategic: {

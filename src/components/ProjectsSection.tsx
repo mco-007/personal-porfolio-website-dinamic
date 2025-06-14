@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
@@ -23,7 +22,8 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
           result: 'Randevu ve müşteri memnuniyetinde %40 artış',
           cta: 'Uygulamayı İncele',
           image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=400&h=300&fit=crop',
-          category: 'Mobile App'
+          category: 'Mobile App',
+          link: 'https://beautiq.lovable.app'
         },
         {
           name: 'Antalya Turkuaz Web Sitesi',
@@ -32,7 +32,8 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
           result: '%60 organik trafik artışı, %30 müşteri talebi artışı',
           cta: 'Web Sitesini İncele',
           image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop',
-          category: 'Web Development'
+          category: 'Web Development',
+          link: 'https://www.antalyaturkuaz.com'
         },
         {
           name: 'Hanedan Konakları Dijital Katalog',
@@ -41,7 +42,8 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
           result: 'Satış temsilcilerinin işini kolaylaştıran yaratıcı ve prestijli katalog',
           cta: 'Kataloğu İncele',
           image: 'https://images.unsplash.com/photo-1473091534298-04dcbce3278c?w=400&h=300&fit=crop',
-          category: 'Digital Catalog'
+          category: 'Digital Catalog',
+          link: 'https://mcozcn.github.io/mucahitozcan/documents/hanedan-konaklari-katalog.pdf'
         },
         {
           name: 'Değirmen Fabrika Üretim Kılavuzu',
@@ -50,7 +52,8 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
           result: 'Öğrenme süresinde %35 azalma, sınav başarı oranında %90 artış',
           cta: 'Sistemi İncele',
           image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop',
-          category: 'Education System'
+          category: 'Education System',
+          link: 'https://mcozcn.github.io/mucahitozcan/documents/degirmen-kilavuz-sistemi.pdf'
         }
       ]
     },
@@ -65,7 +68,8 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
           result: '40% increase in appointments and customer satisfaction',
           cta: 'View Application',
           image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=400&h=300&fit=crop',
-          category: 'Mobile App'
+          category: 'Mobile App',
+          link: 'https://beautiq.lovable.app'
         },
         {
           name: 'Antalya Turkuaz Website',
@@ -74,7 +78,8 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
           result: '60% organic traffic increase, 30% customer inquiry increase',
           cta: 'View Website',
           image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop',
-          category: 'Web Development'
+          category: 'Web Development',
+          link: 'https://www.antalyaturkuaz.com'
         },
         {
           name: 'Hanedan Residences Digital Catalog',
@@ -83,7 +88,8 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
           result: 'Creative and prestigious catalog facilitating sales representatives\' work',
           cta: 'View Catalog',
           image: 'https://images.unsplash.com/photo-1473091534298-04dcbce3278c?w=400&h=300&fit=crop',
-          category: 'Digital Catalog'
+          category: 'Digital Catalog',
+          link: 'https://mcozcn.github.io/mucahitozcan/documents/hanedan-konaklari-katalog.pdf'
         },
         {
           name: 'Mill Factory Production Guide',
@@ -92,7 +98,8 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
           result: '35% reduction in learning time, 90% increase in exam success rate',
           cta: 'View System',
           image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop',
-          category: 'Education System'
+          category: 'Education System',
+          link: 'https://mcozcn.github.io/mucahitozcan/documents/degirmen-kilavuz-sistemi.pdf'
         }
       ]
     }
@@ -168,7 +175,7 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
           </p>
         </div>
 
-        {/* Projects Grid with Advanced 3D Cards */}
+        {/* Projects Grid with Links */}
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16">
             {content[language].projects.map((project, index) => (
@@ -227,8 +234,11 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
                     </p>
                   </div>
                   
-                  {/* CTA Button */}
-                  <Button className="w-full bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-400 hover:to-cyan-500 text-white font-bold py-4 text-lg transform hover:scale-105 hover:rotate-1 transition-all duration-500 shadow-2xl hover:shadow-emerald-500/50 overflow-hidden group/btn">
+                  {/* CTA Button with Link */}
+                  <Button 
+                    onClick={() => window.open(project.link, '_blank')}
+                    className="w-full bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-400 hover:to-cyan-500 text-white font-bold py-4 text-lg transform hover:scale-105 hover:rotate-1 transition-all duration-500 shadow-2xl hover:shadow-emerald-500/50 overflow-hidden group/btn"
+                  >
                     <span className="relative z-10">{project.cta}</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500 origin-left"></div>
                     <div className="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-cyan-500 rounded blur opacity-0 group-hover/btn:opacity-75 transition duration-500"></div>

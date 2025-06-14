@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 
@@ -14,9 +13,9 @@ const HeroSection = ({ language }: HeroSectionProps) => {
     tr: {
       title: 'MÜCAHİT',
       subtitle: 'ÖZCAN',
-      tagline: 'DİJİTAL GÜÇ',
+      tagline: 'DİJİTAL GÜÇLE',
       description: 'Stratejik Dönüşüm',
-      longDescription: '13+ yıllık deneyimle işletmelerin geleceğini şekillendiren dijital mimarı',
+      longDescription: '13+ yıllık deneyimle, işletmeleri dijital çağda yeniden konumlandıran bir yol arkadaşı.',
       primaryCta: 'PROJELER',
       secondaryCta: 'İLETİŞİM',
       slogan: 'DIGITAL TRANSFORMATION ARCHITECT'
@@ -26,7 +25,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
       subtitle: 'ÖZCAN',
       tagline: 'DIGITAL POWER',
       description: 'Strategic Transformation',
-      longDescription: 'Digital architect shaping the future of businesses with 13+ years of experience',
+      longDescription: 'A companion who repositions businesses in the digital age with 13+ years of experience.',
       primaryCta: 'PROJECTS',
       secondaryCta: 'CONTACT',
       slogan: 'DIGITAL TRANSFORMATION ARCHITECT'
@@ -181,7 +180,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
                 {/* Dynamic Glowing Background */}
                 <div className="absolute inset-0 w-80 h-80 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 rounded-full blur-3xl animate-pulse-glow"></div>
                 
-                {/* Main Photo Container */}
+                {/* Main Photo Container with Updated Image */}
                 <div className="relative w-72 h-72 mx-auto">
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full p-1 animate-gradient-shift">
                     <img 
