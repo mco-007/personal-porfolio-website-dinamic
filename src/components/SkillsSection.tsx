@@ -189,32 +189,32 @@ const SkillsSection = ({ language }: SkillsSectionProps) => {
           </p>
         </div>
         
-        {/* Skills Grid with Fixed Hover Effects */}
+        {/* Skills Grid with Enhanced Hover Effects */}
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             {content[language].skills.map((skill, index) => (
-              <Card key={index} className={`glass border-2 border-orange-500/30 backdrop-blur-xl hover:border-orange-500/80 transition-all duration-500 group cursor-pointer transform hover:scale-105 hover:-translate-y-4 modern-card perspective-1000 ${
+              <Card key={index} className={`glass border-2 border-orange-500/30 backdrop-blur-xl hover:border-orange-500/80 transition-all duration-300 group cursor-pointer transform hover:translate-y-2 hover:shadow-2xl hover:shadow-orange-500/25 ${
                 index % 2 === 0 ? 'lg:-mt-8' : 'lg:mt-8'
               }`}>
-                <CardContent className="p-10 text-center relative z-10">
-                  {/* Skill Icon with Fixed Animation */}
+                <CardContent className="p-10 text-center relative z-10 overflow-hidden">
+                  {/* Skill Icon with Refined Animation */}
                   <div className="relative mb-8">
-                    <div className={`w-24 h-24 mx-auto bg-gradient-to-r ${skill.color} rounded-full flex items-center justify-center text-4xl transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-2xl group-hover:shadow-orange-500/50`}>
+                    <div className={`w-24 h-24 mx-auto bg-gradient-to-r ${skill.color} rounded-full flex items-center justify-center text-4xl transform group-hover:rotate-12 transition-all duration-300 shadow-2xl`}>
                       {skill.icon}
                     </div>
                   </div>
                   
-                  {/* Skill Name - Fixed Visibility */}
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-orange-300 transition-all duration-300 font-display">
+                  {/* Skill Name - Always Visible */}
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-orange-300 transition-colors duration-300 font-display">
                     {skill.name}
                   </h3>
                   
-                  {/* Description - Fixed Visibility */}
+                  {/* Description - Always Visible */}
                   <p className="text-gray-300 text-sm mb-8 leading-relaxed group-hover:text-white transition-colors duration-300 font-sans">
                     {skill.description}
                   </p>
                   
-                  {/* Skill Level with Fixed Progress Bar */}
+                  {/* Skill Level with Enhanced Progress Bar */}
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors duration-300 font-mono">Yetkinlik</span>
@@ -223,19 +223,23 @@ const SkillsSection = ({ language }: SkillsSectionProps) => {
                       </span>
                     </div>
                     
-                    {/* Progress Bar - Fixed Design */}
-                    <div className="relative w-full h-3 bg-gray-800/50 rounded-full overflow-hidden backdrop-blur-sm">
+                    {/* Progress Bar - Enhanced Design */}
+                    <div className="relative w-full h-3 bg-gray-800/50 rounded-full overflow-hidden backdrop-blur-sm border border-gray-700/50">
                       <div 
                         className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out relative`}
                         style={{ width: `${skill.level}%` }}
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-data-stream"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent rounded-full"></div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Subtle Background Effects */}
-                  <div className={`absolute inset-0 bg-gradient-to-r ${skill.color.replace('500', '500/5')} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg`}></div>
+                  {/* Refined Background Effects */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${skill.color.replace('500', '500/10')} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg`}></div>
+                  
+                  {/* Border Glow Effect */}
+                  <div className={`absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-gradient-to-r group-hover:${skill.color.replace('to-', 'via-')} opacity-0 group-hover:opacity-50 transition-opacity duration-300`}></div>
                 </CardContent>
               </Card>
             ))}
