@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, Zap, Target, Globe } from 'lucide-react';
@@ -14,6 +15,7 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
 
   const content = {
     tr: {
+      name: 'Mücahit Özcan',
       title: 'DİJİTAL GÜÇLE',
       subtitle: 'STRATEJİK DÖNÜŞÜM',
       description: '13+ yıllık deneyimle, işletmeleri dijital çağda yeniden konumlandıran bir yol arkadaşı.',
@@ -25,6 +27,7 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
       ]
     },
     en: {
+      name: 'Mücahit Özcan',
       title: 'DIGITAL POWER',
       subtitle: 'STRATEGIC TRANSFORMATION',
       description: 'With 13+ years of experience, a companion who repositions businesses in the digital age.',
@@ -109,8 +112,15 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
         <div className="flex flex-col lg:flex-row items-center justify-between min-h-screen py-20">
           {/* Left Content */}
           <div className="lg:w-1/2 text-center lg:text-left mb-16 lg:mb-0">
+            {/* Name */}
+            <div className="relative mb-4">
+              <h3 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-wider">
+                {content[language].name}
+              </h3>
+            </div>
+
             {/* Main Title with Neon Effect */}
-            <div className="relative mb-6">
+            <div className="relative mb-2">
               <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none animate-hologram">
                 {content[language].title}
               </h1>
@@ -174,7 +184,7 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
               <div className="relative">
                 <img 
                   src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=400&fit=crop"
-                  alt="Hero Image"
+                  alt="Mücahit Özcan"
                   className="rounded-3xl shadow-2xl transform transition-all duration-500 group-hover:scale-105"
                 />
                 {/* Border Glow */}
