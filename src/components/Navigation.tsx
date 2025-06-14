@@ -13,7 +13,7 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
 
   const content = {
     tr: {
-      home: 'Ana',
+      home: 'Ana Sayfa',
       about: 'Hakkımda',
       experience: 'Deneyim',
       projects: 'Projeler',
