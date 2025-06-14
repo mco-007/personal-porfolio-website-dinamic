@@ -101,26 +101,26 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
       <div className="absolute top-10 left-20 w-32 h-32 border-2 border-cyan-400/30 rotate-45 animate-spin-slow"></div>
       <div className="absolute bottom-20 right-32 w-24 h-24 bg-gradient-to-r from-purple-500/20 to-transparent rounded-full animate-bounce-slow"></div>
 
-      {/* Wavy Divider */}
-      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 overflow-hidden">
-        <svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ height: '100%', width: '100%' }}>
-          <path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style={{ stroke: 'none', fill: 'rgba(255,255,255,0.05)' }}></path>
-        </svg>
-      </div>
-
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between min-h-screen py-20">
+        <div className="flex flex-col lg:flex-row items-center justify-between min-h-screen py-20 gap-16">
           {/* Left Content */}
-          <div className="lg:w-1/2 text-center lg:text-left mb-16 lg:mb-0">
-            {/* Name */}
-            <div className="relative mb-4">
-              <h3 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-wider">
-                {content[language].name}
-              </h3>
+          <div className="lg:w-1/2 text-center lg:text-left">
+            {/* Name with sophisticated design */}
+            <div className="relative mb-8">
+              <div className="inline-block relative">
+                <h3 className="text-3xl md:text-4xl font-light text-white/90 tracking-[0.2em] uppercase mb-2 relative">
+                  {content[language].name}
+                  <div className="absolute -bottom-2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+                </h3>
+                {/* Subtle glow effect */}
+                <div className="absolute inset-0 text-3xl md:text-4xl font-light text-cyan-400/20 blur-sm">
+                  {content[language].name}
+                </div>
+              </div>
             </div>
 
             {/* Main Title with Neon Effect */}
-            <div className="relative mb-2">
+            <div className="relative mb-4">
               <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none animate-hologram">
                 {content[language].title}
               </h1>
@@ -137,7 +137,7 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
             </div>
             
             {/* Description */}
-            <p className="text-lg text-gray-300 mb-12 animate-fade-in delay-200">
+            <p className="text-lg text-gray-300 mb-12 animate-fade-in delay-200 max-w-xl">
               {content[language].description}
             </p>
 
@@ -173,22 +173,42 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
             </div>
           </div>
 
-          {/* Right Content */}
+          {/* Right Content - Profile Image */}
           <div className="lg:w-1/2 flex justify-center lg:justify-end">
             <div className="relative group">
-              {/* 3D Floating Elements */}
-              <div className="absolute -top-20 -left-20 w-48 h-48 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-full blur-2xl animate-float"></div>
-              <div className="absolute bottom-10 right-10 w-32 h-32 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full blur-2xl animate-float"></div>
+              {/* Floating background elements */}
+              <div className="absolute -top-20 -left-20 w-64 h-64 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-full blur-3xl animate-float"></div>
+              <div className="absolute bottom-10 right-10 w-40 h-40 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full blur-2xl animate-float delay-1000"></div>
               
-              {/* Central Image */}
+              {/* Profile Image Container */}
               <div className="relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=400&fit=crop"
-                  alt="Mücahit Özcan"
-                  className="rounded-3xl shadow-2xl transform transition-all duration-500 group-hover:scale-105"
-                />
-                {/* Border Glow */}
-                <div className="absolute inset-0 rounded-3xl border-2 border-cyan-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                {/* Outer glow ring */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-purple-500 to-cyan-400 p-1 animate-spin-slow">
+                  <div className="w-full h-full rounded-full bg-black"></div>
+                </div>
+                
+                {/* Image */}
+                <div className="relative w-80 h-80 md:w-96 md:h-96">
+                  <img 
+                    src="/lovable-uploads/1e6e526d-3c76-4238-b838-097368cf673b.png"
+                    alt="Mücahit Özcan"
+                    className="w-full h-full object-cover rounded-full relative z-10 transform transition-all duration-700 group-hover:scale-105"
+                  />
+                  
+                  {/* Inner glow effect */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/30 to-purple-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                  
+                  {/* Pulse effect */}
+                  <div className="absolute inset-0 rounded-full border-2 border-cyan-400/50 animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+              </div>
+
+              {/* Floating tech icons */}
+              <div className="absolute top-1/4 -left-16 w-12 h-12 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-lg backdrop-blur-sm border border-cyan-400/30 flex items-center justify-center animate-float">
+                <Zap className="w-6 h-6 text-cyan-400" />
+              </div>
+              <div className="absolute bottom-1/4 -right-16 w-12 h-12 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-lg backdrop-blur-sm border border-purple-400/30 flex items-center justify-center animate-float delay-500">
+                <Target className="w-6 h-6 text-purple-400" />
               </div>
             </div>
           </div>
