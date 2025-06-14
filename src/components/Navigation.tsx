@@ -13,13 +13,13 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
 
   const content = {
     tr: {
-      home: 'Anasayfa',
+      home: 'Ana',
       about: 'Hakkımda',
-      experience: 'Deneyimler',
+      experience: 'Deneyim',
       projects: 'Projeler',
       skills: 'Yetenekler',
       contact: 'İletişim',
-      cta: 'Bana Ulaşın'
+      cta: 'BAĞLANTI'
     },
     en: {
       home: 'Home',
@@ -28,7 +28,7 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
       projects: 'Projects',
       skills: 'Skills',
       contact: 'Contact',
-      cta: 'Contact Me'
+      cta: 'CONNECT'
     }
   };
 
@@ -65,65 +65,69 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       isScrolled 
-        ? 'bg-gray-900/95 backdrop-blur-md shadow-2xl border-b border-white/10' 
+        ? 'bg-black/80 backdrop-blur-2xl border-b border-cyan-500/20' 
         : 'bg-transparent'
     }`}>
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-            MÜCAHİT ÖZCAN
+          {/* Logo with Unique Styling */}
+          <div className="relative group">
+            <div className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-wider">
+              MÜCAHİT
+            </div>
+            <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:w-full transition-all duration-300"></div>
           </div>
           
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation - Minimal & Modern */}
+          <div className="hidden lg:flex items-center space-x-12">
             {Object.entries(content[language]).slice(0, 6).map(([key, value]) => (
               <button
                 key={key}
                 onClick={() => scrollToSection(key)}
-                className={`relative text-sm font-medium transition-all duration-300 hover:text-blue-400 group ${
-                  activeSection === key ? 'text-blue-400' : 'text-gray-300'
+                className={`relative text-sm font-medium tracking-wider uppercase transition-all duration-300 group ${
+                  activeSection === key ? 'text-cyan-400' : 'text-gray-300 hover:text-white'
                 }`}
               >
                 {value}
-                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 group-hover:w-full ${
+                <span className={`absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-cyan-400 to-purple-400 transition-all duration-300 group-hover:w-full ${
                   activeSection === key ? 'w-full' : ''
                 }`}></span>
               </button>
             ))}
           </div>
 
-          <div className="flex items-center space-x-4">
-            {/* Language Switcher */}
-            <div className="flex items-center space-x-1 bg-white/10 rounded-full p-1 backdrop-blur-sm">
+          <div className="flex items-center space-x-6">
+            {/* Language Switcher - Redesigned */}
+            <div className="flex items-center space-x-2">
               <button
                 onClick={() => setLanguage('tr')}
-                className={`text-xs px-3 py-1.5 rounded-full transition-all duration-300 ${
+                className={`px-3 py-1 text-xs font-bold tracking-wider transition-all duration-300 ${
                   language === 'tr' 
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg' 
+                    ? 'text-cyan-400 border-b border-cyan-400' 
                     : 'text-gray-400 hover:text-white'
                 }`}
               >
-                🇹🇷 TR
+                TR
               </button>
+              <div className="w-px h-4 bg-gray-600"></div>
               <button
                 onClick={() => setLanguage('en')}
-                className={`text-xs px-3 py-1.5 rounded-full transition-all duration-300 ${
+                className={`px-3 py-1 text-xs font-bold tracking-wider transition-all duration-300 ${
                   language === 'en' 
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg' 
+                    ? 'text-cyan-400 border-b border-cyan-400' 
                     : 'text-gray-400 hover:text-white'
                 }`}
               >
-                🇬🇧 EN
+                EN
               </button>
             </div>
             
-            {/* CTA Button */}
+            {/* CTA Button - Unique Design */}
             <Button 
               onClick={() => scrollToSection('contact')}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105"
+              className="relative px-6 py-2 bg-transparent border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-black font-bold text-sm tracking-wider uppercase transition-all duration-300 transform hover:scale-105 skew-x-[-12deg]"
             >
-              {content[language].cta}
+              <span className="skew-x-[12deg] block">{content[language].cta}</span>
             </Button>
           </div>
         </div>
