@@ -15,7 +15,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-900">
       <Navigation language={language} setLanguage={setLanguage} />
-      <HeroSection language={language} />
+      <HeroSection language={language} setLanguage={setLanguage} />
       <AboutSection language={language} />
       <ExperienceSection language={language} />
       <ProjectsSection language={language} />
