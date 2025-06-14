@@ -13,7 +13,7 @@ const Index = () => {
   const [language, setLanguage] = useState<'tr' | 'en'>('tr');
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-900">
       <Navigation language={language} setLanguage={setLanguage} />
       <HeroSection language={language} />
       <AboutSection language={language} />
