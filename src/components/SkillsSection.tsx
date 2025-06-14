@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
@@ -189,7 +188,7 @@ const SkillsSection = ({ language }: SkillsSectionProps) => {
           </p>
         </div>
         
-        {/* Skills Grid with Enhanced Hover Effects */}
+        {/* Skills Grid with Original Hover Effects */}
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             {content[language].skills.map((skill, index) => (
@@ -234,12 +233,6 @@ const SkillsSection = ({ language }: SkillsSectionProps) => {
                       </div>
                     </div>
                   </div>
-
-                  {/* Refined Background Effects */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${skill.color.replace('500', '500/10')} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg`}></div>
-                  
-                  {/* Border Glow Effect */}
-                  <div className={`absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-gradient-to-r group-hover:${skill.color.replace('to-', 'via-')} opacity-0 group-hover:opacity-50 transition-opacity duration-300`}></div>
                 </CardContent>
               </Card>
             ))}
