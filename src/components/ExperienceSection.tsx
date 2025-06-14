@@ -1,16 +1,21 @@
 
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { useEffect, useState } from 'react';
 
 interface ExperienceSectionProps {
   language: 'tr' | 'en';
 }
 
 const ExperienceSection = ({ language }: ExperienceSectionProps) => {
+  const [scrollY, setScrollY] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
   const content = {
     tr: {
-      title: 'Deneyimler',
-      cta: 'Projelerimi Gör',
+      title: 'DENEYİMLER',
+      subtitle: 'PROFESSIONAL JOURNEY',
+      cta: 'PROJELERİMİ GÖR',
       experiences: [
         {
           title: 'Freelance Dijital Pazarlama Yöneticisi',
@@ -55,8 +60,9 @@ const ExperienceSection = ({ language }: ExperienceSectionProps) => {
       ]
     },
     en: {
-      title: 'Experience',
-      cta: 'View My Projects',
+      title: 'EXPERIENCE',
+      subtitle: 'PROFESSIONAL JOURNEY',
+      cta: 'VIEW MY PROJECTS',
       experiences: [
         {
           title: 'Freelance Digital Marketing Manager',
@@ -102,6 +108,23 @@ const ExperienceSection = ({ language }: ExperienceSectionProps) => {
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ 
+        x: (e.clientX / window.innerWidth) * 100,
+        y: (e.clientY / window.innerHeight) * 100
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -110,47 +133,158 @@ const ExperienceSection = ({ language }: ExperienceSectionProps) => {
   };
 
   return (
-    <section id="experience" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">{content[language].title}</h2>
+    <section id="experience" className="relative py-40 bg-gradient-to-br from-black via-gray-900 to-indigo-900/30 overflow-hidden">
+      {/* Animated Background Grid */}
+      <div className="absolute inset-0 cyber-grid opacity-20"></div>
+      
+      {/* Dynamic Floating Orbs */}
+      <div className="absolute inset-0">
+        {[...Array(15)].map((_, i) => (
+          <div
+            key={i}
+            className={`absolute w-24 h-24 rounded-full bg-gradient-to-r from-indigo-500/20 to-purple-500/20 blur-xl animate-float`}
+            style={{
+              left: `${5 + i * 6}%`,
+              top: `${10 + (i % 4) * 25}%`,
+              animationDelay: `${i * 0.3}s`,
+              transform: `translateY(${scrollY * 0.05 * (i + 1)}px)`
+            }}
+          ></div>
+        ))}
+      </div>
+
+      {/* Interactive Mouse Follower */}
+      <div 
+        className="absolute w-96 h-96 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl pointer-events-none"
+        style={{
+          left: `${mousePosition.x}%`,
+          top: `${mousePosition.y}%`,
+          transform: 'translate(-50%, -50%)',
+          transition: 'all 0.3s ease-out'
+        }}
+      ></div>
+
+      {/* Geometric Elements */}
+      <div className="absolute top-20 right-20 w-32 h-32 border-2 border-indigo-400/30 rotate-45 animate-spin-slow"></div>
+      <div className="absolute bottom-40 left-10 w-40 h-40 bg-gradient-to-r from-purple-500/20 to-transparent rotate-12 animate-bounce-slow"></div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Section Header with 3D Effect */}
+        <div className="text-center mb-32 relative">
+          <div className="inline-block mb-8 relative">
+            <h2 className="text-8xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-white to-purple-400 tracking-tighter transform hover:scale-105 transition-transform duration-500 animate-hologram">
+              {content[language].title}
+            </h2>
+            {/* 3D Shadow */}
+            <div className="absolute inset-0 text-8xl md:text-9xl font-black text-gray-800/30 transform translate-x-4 translate-y-4 -z-10">
+              {content[language].title}
+            </div>
+            <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-64 h-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate-gradient-shift blur-sm"></div>
+          </div>
+          <p className="text-3xl md:text-4xl font-light text-indigo-300 tracking-widest animate-fade-in delay-200 neon-purple">
+            {content[language].subtitle}
+          </p>
         </div>
-        
-        <div className="max-w-4xl mx-auto">
-          <div className="space-y-8">
-            {content[language].experiences.map((exp, index) => (
-              <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
-                <CardContent className="p-0">
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 md:mb-0">{exp.title}</h3>
-                    <span className="text-blue-600 font-medium bg-blue-50 px-3 py-1 rounded-full text-sm">
+
+        {/* Experience Timeline with Advanced 3D Cards */}
+        <div className="max-w-6xl mx-auto space-y-16">
+          {content[language].experiences.map((exp, index) => (
+            <div key={index} className={`relative group ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} flex flex-col lg:flex items-center gap-16`}>
+              {/* Timeline Line */}
+              <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 transform -translate-x-1/2 hidden lg:block animate-pulse-glow"></div>
+              
+              {/* Experience Card */}
+              <div className="lg:w-1/2 relative">
+                <Card className="glass border-2 border-indigo-500/30 backdrop-blur-xl hover:border-indigo-500/60 transition-all duration-700 group cursor-pointer transform hover:scale-110 hover:-translate-y-8 hover:rotate-2 modern-card perspective-1000">
+                  <CardContent className="p-10 relative z-10">
+                    {/* Period Badge */}
+                    <div className="absolute -top-4 -right-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-full text-sm font-bold shadow-2xl animate-bounce-slow transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-500">
                       {exp.period}
-                    </span>
+                    </div>
+                    
+                    {/* Job Title */}
+                    <h3 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-indigo-300 mb-8 group-hover:from-indigo-400 group-hover:to-purple-400 transition-all duration-500 transform group-hover:scale-110">
+                      {exp.title}
+                    </h3>
+                    
+                    {/* Achievements */}
+                    <div className="space-y-4">
+                      {exp.achievements.map((achievement, achIndex) => (
+                        <div key={achIndex} className="flex items-start group-hover:translate-x-4 transition-transform duration-500" style={{transitionDelay: `${achIndex * 100}ms`}}>
+                          <div className="w-3 h-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mt-2 mr-4 flex-shrink-0 animate-neural-pulse"></div>
+                          <span className="text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-500">{achievement}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Animated Background Effects */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-lg"></div>
+                    <div className="absolute -inset-2 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-lg blur opacity-0 group-hover:opacity-75 transition duration-700"></div>
+                    
+                    {/* Floating Elements */}
+                    <div className="absolute top-4 right-4 w-2 h-2 bg-indigo-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-500"></div>
+                    <div className="absolute bottom-4 left-4 w-2 h-2 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-500 delay-200"></div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Visual Element */}
+              <div className="lg:w-1/2 relative flex justify-center">
+                <div className="relative group">
+                  <div className="w-48 h-48 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse-glow"></div>
+                  <div className="absolute inset-0 w-32 h-32 m-auto border-2 border-indigo-400/50 rounded-full animate-spin-slow"></div>
+                  <div className="absolute inset-0 w-24 h-24 m-auto bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-2xl animate-bounce-slow">
+                    {index + 1}
                   </div>
                   
-                  <ul className="space-y-2">
-                    {exp.achievements.map((achievement, achIndex) => (
-                      <li key={achIndex} className="flex items-start">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <span className="text-gray-600">{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
+                  {/* Orbiting Elements */}
+                  {[...Array(3)].map((_, i) => (
+                    <div
+                      key={i}
+                      className={`absolute w-4 h-4 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full animate-spin-slow`}
+                      style={{
+                        top: '50%',
+                        left: '50%',
+                        transformOrigin: `${40 + i * 10}px`,
+                        animationDelay: `${i * 0.5}s`
+                      }}
+                    ></div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {/* Enhanced CTA Button */}
+        <div className="text-center mt-24">
+          <Button 
+            onClick={() => scrollToSection('projects')}
+            className="group relative px-16 py-8 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-black text-2xl skew-x-[-15deg] transform hover:scale-125 hover:rotate-2 transition-all duration-700 shadow-2xl hover:shadow-indigo-500/50 overflow-hidden animate-pulse-glow"
+          >
+            <span className="skew-x-[15deg] block relative z-10">{content[language].cta}</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            <div className="absolute -inset-2 bg-gradient-to-r from-indigo-400 to-purple-500 rounded blur opacity-0 group-hover:opacity-75 transition duration-500"></div>
+            
+            {/* Particle Effects */}
+            {[...Array(8)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-1 h-1 bg-white rounded-full opacity-0 group-hover:opacity-100 animate-particle-float"
+                style={{
+                  left: `${10 + i * 10}%`,
+                  top: `${20 + (i % 3) * 30}%`,
+                  animationDelay: `${i * 0.1}s`
+                }}
+              ></div>
             ))}
-          </div>
-          
-          <div className="text-center mt-12">
-            <Button 
-              onClick={() => scrollToSection('projects')}
-              className="bg-blue-600 hover:bg-blue-700 text-white"
-            >
-              {content[language].cta}
-            </Button>
-          </div>
+          </Button>
         </div>
       </div>
+
+      {/* Section Transition Effect */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-gray-900 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent animate-pulse"></div>
     </section>
   );
 };
