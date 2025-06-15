@@ -137,22 +137,19 @@ const SkillsSection = ({ language }: SkillsSectionProps) => {
   };
 
   return (
-    <section id="skills" className="relative py-40 bg-gradient-to-br from-black via-gray-900 to-orange-900/30 overflow-hidden font-display">
-      {/* Animated Background Grid */}
-      <div className="absolute inset-0 cyber-grid opacity-20"></div>
-      
+    <section id="skills" className="relative py-40 bg-gradient-to-br from-black via-gray-900 to-orange-900/30 overflow-hidden">
       {/* Neural Network Effect */}
       <div className="absolute inset-0">
         {[...Array(25)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-16 h-16 rounded-full border border-orange-400/20 animate-neural-pulse"
+            className="absolute w-16 h-16 rounded-full border border-orange-400/20 animate-pulse"
             style={{
               left: `${5 + (i % 5) * 20}%`,
               top: `${10 + Math.floor(i / 5) * 20}%`,
               animationDelay: `${i * 0.1}s`
             }}
-          ></div>
+          />
         ))}
       </div>
 
@@ -165,146 +162,146 @@ const SkillsSection = ({ language }: SkillsSectionProps) => {
           transform: 'translate(-50%, -50%)',
           transition: 'all 0.3s ease-out'
         }}
-      ></div>
+      />
 
       {/* Geometric Elements */}
-      <div className="absolute top-20 right-20 w-48 h-48 border-2 border-orange-400/30 rotate-45 animate-spin-slow"></div>
-      <div className="absolute bottom-40 left-10 w-32 h-32 bg-gradient-to-r from-red-500/20 to-transparent rotate-12 animate-bounce-slow"></div>
+      <div className="absolute top-20 right-20 w-48 h-48 border-2 border-orange-400/30 rotate-45 animate-spin"></div>
+      <div className="absolute bottom-40 left-10 w-32 h-32 bg-gradient-to-r from-red-500/20 to-transparent rotate-12 animate-bounce"></div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header with Neon Effect */}
+        {/* Section Header */}
         <div className="text-center mb-32 relative">
           <div className="inline-block mb-8 relative">
-            <h2 className="text-8xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-red-300 to-pink-400 tracking-tighter transform hover:scale-105 transition-transform duration-500 animate-hologram font-display">
+            <h2 className="text-8xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-red-300 to-pink-400 tracking-tighter transform hover:scale-105 transition-transform duration-500">
               {content[language].title}
             </h2>
-            {/* Neon Glow */}
-            <div className="absolute inset-0 text-8xl md:text-9xl font-black text-orange-400/30 transform blur-sm animate-pulse font-display">
+            <div className="absolute inset-0 text-8xl md:text-9xl font-black text-orange-400/30 transform blur-sm animate-pulse">
               {content[language].title}
             </div>
-            <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-64 h-3 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 animate-gradient-shift blur-sm"></div>
+            <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-64 h-3 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 blur-sm"></div>
           </div>
-          <p className="text-3xl md:text-4xl font-light text-orange-300 tracking-widest animate-fade-in delay-200 neon-cyan font-mono">
+          <p className="text-3xl md:text-4xl font-light text-orange-300 tracking-widest">
             {content[language].subtitle}
           </p>
         </div>
         
-        {/* Skills Grid with Unique Hover Effects */}
+        {/* Skills Grid */}
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             {content[language].skills.map((skill, index) => (
               <Card 
                 key={index} 
                 className={`
-                  glass border-2 border-orange-500/30 backdrop-blur-xl 
+                  bg-black/40 border-2 border-orange-500/30 backdrop-blur-xl 
                   transition-all duration-700 ease-out
                   group cursor-pointer 
                   relative overflow-hidden
                   hover:border-orange-400/60
                   hover:shadow-[0_20px_80px_rgba(251,146,60,0.3)]
-                  hover:-translate-y-4
-                  hover:rotate-1
-                  hover:scale-[1.02]
+                  hover:-translate-y-6
+                  hover:rotate-2
                   ${index % 2 === 0 ? 'lg:-mt-8' : 'lg:mt-8'}
                 `}
               >
-                {/* Animated Background Pattern */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700">
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-red-500/10"></div>
-                  <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23f97316" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] animate-pulse"></div>
+                {/* Morphing Background */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-all duration-1000">
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-transparent to-red-500/20 animate-pulse"></div>
                 </div>
 
-                {/* Floating Light Effect */}
-                <div className="absolute -top-4 -right-4 w-8 h-8 bg-orange-400/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:animate-ping"></div>
-                <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-red-400/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200"></div>
+                {/* Floating Particles */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  {[...Array(8)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="absolute w-1 h-1 bg-orange-400 rounded-full animate-bounce"
+                      style={{
+                        left: `${10 + (i % 4) * 25}%`,
+                        top: `${20 + Math.floor(i / 4) * 40}%`,
+                        animationDelay: `${i * 0.3}s`,
+                        animationDuration: '2s'
+                      }}
+                    />
+                  ))}
+                </div>
 
                 <CardContent className="p-10 text-center relative z-10">
-                  {/* Skill Icon with Unique Animation */}
-                  <div className="relative mb-8 group-hover:animate-bounce">
+                  {/* Skill Icon with Magnetic Effect */}
+                  <div className="relative mb-8">
                     <div className={`
                       w-24 h-24 mx-auto bg-gradient-to-r ${skill.color} rounded-full 
                       flex items-center justify-center text-4xl 
-                      transition-all duration-700 ease-out
+                      transition-all duration-1000 ease-out
                       shadow-2xl
-                      group-hover:shadow-[0_0_40px_rgba(251,146,60,0.6)]
-                      group-hover:rotate-[360deg]
-                      group-hover:scale-110
+                      group-hover:shadow-[0_0_60px_rgba(251,146,60,0.8)]
+                      group-hover:rotate-[720deg]
+                      group-hover:scale-125
                       relative overflow-hidden
                     `}>
-                      {/* Icon Shimmer Effect */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
-                      <span className="relative z-10">{skill.icon}</span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1500"></div>
+                      <span className="relative z-10 filter group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">{skill.icon}</span>
                     </div>
                     
-                    {/* Orbiting Dots */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                      <div className="absolute top-1/2 left-1/2 w-32 h-32 -translate-x-1/2 -translate-y-1/2">
-                        <div className="absolute top-0 left-1/2 w-2 h-2 bg-orange-400 rounded-full transform -translate-x-1/2 animate-spin origin-center" style={{ animationDuration: '3s' }}></div>
-                        <div className="absolute bottom-0 left-1/2 w-2 h-2 bg-red-400 rounded-full transform -translate-x-1/2 animate-spin origin-center" style={{ animationDuration: '4s', animationDirection: 'reverse' }}></div>
-                        <div className="absolute top-1/2 left-0 w-2 h-2 bg-yellow-400 rounded-full transform -translate-y-1/2 animate-spin origin-center" style={{ animationDuration: '5s' }}></div>
-                        <div className="absolute top-1/2 right-0 w-2 h-2 bg-pink-400 rounded-full transform -translate-y-1/2 animate-spin origin-center" style={{ animationDuration: '3.5s', animationDirection: 'reverse' }}></div>
-                      </div>
+                    {/* Electric Ring Effect */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
+                      <div className="absolute top-1/2 left-1/2 w-40 h-40 -translate-x-1/2 -translate-y-1/2 border-2 border-dashed border-orange-400/50 rounded-full animate-spin"></div>
+                      <div className="absolute top-1/2 left-1/2 w-48 h-48 -translate-x-1/2 -translate-y-1/2 border border-red-400/30 rounded-full animate-ping"></div>
                     </div>
                   </div>
                   
-                  {/* Skill Name with Typing Effect */}
-                  <h3 className="text-2xl font-bold text-white mb-4 transition-all duration-500 group-hover:text-orange-300 group-hover:tracking-wider font-display">
-                    {skill.name}
+                  {/* Skill Name with Glitch Effect */}
+                  <h3 className="text-2xl font-bold text-white mb-4 transition-all duration-500 group-hover:text-orange-300 group-hover:tracking-[0.3em] relative">
+                    <span className="relative z-10">{skill.name}</span>
+                    <span className="absolute inset-0 text-orange-500/50 transform translate-x-0.5 translate-y-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{skill.name}</span>
                   </h3>
                   
-                  {/* Description with Slide Animation */}
-                  <p className="text-gray-300 text-sm mb-8 leading-relaxed transition-all duration-500 group-hover:text-white group-hover:transform group-hover:translate-y-[-2px] font-sans">
+                  {/* Description with Wave Animation */}
+                  <p className="text-gray-300 text-sm mb-8 leading-relaxed transition-all duration-700 group-hover:text-white group-hover:transform group-hover:scale-105">
                     {skill.description}
                   </p>
                   
-                  {/* Skill Level with Enhanced Progress Bar */}
+                  {/* Skill Level with Liquid Progress */}
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors duration-300 font-mono">Yetkinlik</span>
-                      <span className={`text-lg font-bold bg-gradient-to-r ${skill.color} bg-clip-text text-transparent font-display group-hover:animate-pulse`}>
+                      <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors duration-300">Yetkinlik</span>
+                      <span className={`text-lg font-bold bg-gradient-to-r ${skill.color} bg-clip-text text-transparent group-hover:animate-pulse`}>
                         {skill.level}%
                       </span>
                     </div>
                     
-                    {/* Progress Bar with Particle Effect */}
-                    <div className="relative w-full h-3 bg-gray-800/50 rounded-full overflow-hidden backdrop-blur-sm border border-gray-700/50 group-hover:border-orange-400/50 transition-all duration-500">
+                    {/* Liquid Progress Bar */}
+                    <div className="relative w-full h-4 bg-gray-800/50 rounded-full overflow-hidden backdrop-blur-sm border border-gray-700/50 group-hover:border-orange-400/50 transition-all duration-500">
                       <div 
-                        className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out relative group-hover:animate-pulse`}
+                        className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-2000 ease-out relative group-hover:animate-pulse`}
                         style={{ width: `${skill.level}%` }}
                       >
-                        {/* Animated Data Stream */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 animate-data-stream"></div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent rounded-full"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent transform -skew-x-12 animate-pulse"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent rounded-full"></div>
                         
-                        {/* Particle Trail Effect */}
-                        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                          <div className="flex space-x-1">
-                            {[...Array(3)].map((_, i) => (
-                              <div 
-                                key={i}
-                                className="w-1 h-1 bg-white rounded-full animate-pulse"
-                                style={{ animationDelay: `${i * 0.2}s` }}
-                              ></div>
-                            ))}
-                          </div>
+                        {/* Flowing Effect */}
+                        <div className="absolute top-0 left-0 w-full h-full">
+                          <div className="w-3 h-3 bg-white/60 rounded-full absolute top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:animate-ping" style={{ left: `${skill.level - 5}%` }}></div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </CardContent>
 
-                {/* Corner Accent Lines */}
-                <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-orange-400/0 group-hover:border-orange-400/60 transition-all duration-500"></div>
-                <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-orange-400/0 group-hover:border-orange-400/60 transition-all duration-500"></div>
+                {/* Dynamic Corner Elements */}
+                <div className="absolute top-0 left-0 w-12 h-12 border-l-4 border-t-4 border-orange-400/0 group-hover:border-orange-400/80 transition-all duration-700 transform group-hover:scale-110"></div>
+                <div className="absolute bottom-0 right-0 w-12 h-12 border-r-4 border-b-4 border-orange-400/0 group-hover:border-orange-400/80 transition-all duration-700 transform group-hover:scale-110"></div>
+                
+                {/* Energy Lines */}
+                <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-orange-500/0 to-transparent group-hover:via-orange-500/60 transition-all duration-700 transform -translate-y-1/2"></div>
+                <div className="absolute top-0 left-1/2 w-0.5 h-full bg-gradient-to-b from-transparent via-orange-500/0 to-transparent group-hover:via-orange-500/60 transition-all duration-700 transform -translate-x-1/2"></div>
               </Card>
             ))}
           </div>
           
-          {/* Enhanced CTA Button */}
+          {/* CTA Button */}
           <div className="text-center mt-24">
             <Button 
               onClick={() => scrollToSection('contact')}
-              className="group relative px-16 py-8 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-400 hover:to-red-500 text-white font-bold text-2xl transform hover:scale-110 transition-all duration-500 shadow-2xl hover:shadow-orange-500/50 overflow-hidden font-display"
+              className="group relative px-16 py-8 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-400 hover:to-red-500 text-white font-bold text-2xl transform hover:scale-110 transition-all duration-500 shadow-2xl hover:shadow-orange-500/50 overflow-hidden"
             >
               <span className="relative z-10">{content[language].cta}</span>
               <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
