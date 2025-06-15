@@ -166,11 +166,13 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
               
               {/* Profile Image Container */}
               <div className="relative">
-                {/* Outer glow ring */}
+                {/* KALDIRILAN: Outer glow ring ve dönme animasyonu */}
+                {/* <<<< KALDIRILAN KOD >>>>
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-purple-500 to-cyan-400 p-1 animate-spin-slow">
                   <div className="w-full h-full rounded-full bg-black"></div>
                 </div>
-                
+                */}
+
                 {/* Image */}
                 <div className="relative w-80 h-80 md:w-96 md:h-96">
                   <img 
