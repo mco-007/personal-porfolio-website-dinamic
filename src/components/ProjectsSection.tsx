@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
@@ -14,6 +15,7 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
     tr: {
       title: 'PROJELER',
       subtitle: 'DİJİTAL BAŞYAPITLAR',
+      result: 'SONUÇ',
       projects: [
         {
           name: 'Beautiq – Güzellik Salonu Yönetimi',
@@ -60,6 +62,7 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
     en: {
       title: 'PROJECTS',
       subtitle: 'DIGITAL MASTERPIECES',
+      result: 'RESULT',
       projects: [
         {
           name: 'Beautiq – Beauty Salon Management',
@@ -87,7 +90,7 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
           description: 'Interactive digital catalog with 3D visualizations, virtual tours and dynamic pricing features.',
           result: 'Creative and prestigious catalog facilitating sales representatives\' work',
           cta: 'View Catalog',
-          image: 'https://images.unsplash.com/photo-1473091534298-04dcbce3278c?w=400&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1473091534298-04dcbce3298-04dcbce3278c?w=400&h=300&fit=crop',
           category: 'Digital Catalog',
           link: 'https://mcozcn.github.io/mucahitozcan/documents/hanedan-konaklari-katalog.pdf'
         },
@@ -230,7 +233,7 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
                   {/* Result Badge */}
                   <div className="bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 border border-emerald-500/30 p-4 rounded-xl mb-6 group-hover:border-emerald-500/60 transition-all duration-500">
                     <p className="text-emerald-400 font-bold text-sm neon-cyan">
-                      <span className="font-black">SONUÇ:</span> {project.result}
+                      <span className="font-black">{content[language].result}:</span> {project.result}
                     </p>
                   </div>
                   

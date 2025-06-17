@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
@@ -16,6 +15,7 @@ const SkillsSection = ({ language }: SkillsSectionProps) => {
       title: 'YETENEKLER',
       subtitle: 'TEKNİK HÂKİMİYET',
       cta: 'PROJE FİKRİNİZ Mİ VAR?',
+      skillLevel: 'Yetkinlik',
       skills: [
         {
           name: 'Stratejik Pazarlama',
@@ -65,6 +65,7 @@ const SkillsSection = ({ language }: SkillsSectionProps) => {
       title: 'SKILLS',
       subtitle: 'TECHNICAL MASTERY',
       cta: 'HAVE A PROJECT IDEA?',
+      skillLevel: 'Proficiency',
       skills: [
         {
           name: 'Strategic Marketing',
@@ -137,7 +138,7 @@ const SkillsSection = ({ language }: SkillsSectionProps) => {
   };
 
   return (
-    <section id="skills" className="relative py-40 bg-gradient-to-br from-black via-gray-900 to-orange-900/30 overflow-hidden">
+    <section id="skills" className="relative py-40 bg-gradient-to-br from-black via-gray-900 to-orange-900/30 overflow-hidden font-display">
       {/* Neural Network Effect */}
       <div className="absolute inset-0">
         {[...Array(25)].map((_, i) => (
@@ -185,21 +186,22 @@ const SkillsSection = ({ language }: SkillsSectionProps) => {
           </p>
         </div>
         
-        {/* Skills Grid */}
+        {/* Skills Grid with Unique Hover Effects */}
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             {content[language].skills.map((skill, index) => (
               <Card 
                 key={index} 
                 className={`
-                  bg-black/40 border-2 border-orange-500/30 backdrop-blur-xl 
+                  glass border-2 border-orange-500/30 backdrop-blur-xl 
                   transition-all duration-700 ease-out
                   group cursor-pointer 
                   relative overflow-hidden
                   hover:border-orange-400/60
                   hover:shadow-[0_20px_80px_rgba(251,146,60,0.3)]
-                  hover:-translate-y-6
-                  hover:rotate-2
+                  hover:-translate-y-4
+                  hover:rotate-1
+                  hover:scale-[1.02]
                   ${index % 2 === 0 ? 'lg:-mt-8' : 'lg:mt-8'}
                 `}
               >
@@ -259,11 +261,11 @@ const SkillsSection = ({ language }: SkillsSectionProps) => {
                     {skill.description}
                   </p>
                   
-                  {/* Skill Level with Liquid Progress */}
+                  {/* Skill Level with Enhanced Progress Bar */}
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors duration-300">Yetkinlik</span>
-                      <span className={`text-lg font-bold bg-gradient-to-r ${skill.color} bg-clip-text text-transparent group-hover:animate-pulse`}>
+                      <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors duration-300 font-mono">{content[language].skillLevel}</span>
+                      <span className={`text-lg font-bold bg-gradient-to-r ${skill.color} bg-clip-text text-transparent font-display group-hover:animate-pulse`}>
                         {skill.level}%
                       </span>
                     </div>
