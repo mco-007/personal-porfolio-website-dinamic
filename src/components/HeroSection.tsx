@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, Zap, Target, Globe } from 'lucide-react';
@@ -181,20 +180,20 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
           <div className="lg:w-1/2 text-center lg:text-left">
             {/* Main Title with Matrix Effect */}
             <div className="relative mb-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-tight font-display">
+              <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none font-display">
                 {titleText}
               </h1>
-              <div className="absolute inset-0 text-5xl md:text-6xl lg:text-7xl font-black text-cyan-400/30 transform blur-sm animate-pulse font-display">
+              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-cyan-400/30 transform blur-sm animate-pulse font-display">
                 {titleText}
               </div>
             </div>
 
             {/* Subtitle with Matrix Effect */}
-            <div className="relative mb-8 h-16 md:h-20 overflow-hidden">
+            <div className="relative mb-8 h-20 overflow-hidden">
               {showSubtitle && (
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-tight font-display">
+                <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none font-display">
                   {subtitleText}
-                  <div className="absolute inset-0 text-3xl md:text-4xl lg:text-5xl font-black text-purple-400/30 transform blur-sm animate-pulse font-display">
+                  <div className="absolute inset-0 text-4xl md:text-5xl font-black text-purple-400/30 transform blur-sm animate-pulse font-display">
                     {subtitleText}
                   </div>
                 </h2>
@@ -265,7 +264,7 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
 
               {/* Name Below Image - Made Bigger */}
               <div className="relative group mt-8 text-center">
-                <div className="text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-wider leading-tight font-display">
+                <div className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-wider font-display">
                   MÜCAHİT ÖZCAN
                 </div>
                 <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:w-full transition-all duration-300"></div>

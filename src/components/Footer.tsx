@@ -42,6 +42,12 @@ const Footer = ({ language }: FooterProps) => {
         <div className="grid md:grid-cols-2 gap-8">
           <div>
             <h3 className="text-2xl font-bold mb-4">MÜCAHİT ÖZCAN</h3>
+            <p className="text-gray-300 leading-relaxed">
+              {language === 'tr' 
+                ? 'Dijital dönüşüm uzmanı olarak işletmelerin teknoloji ile büyümesine yardımcı oluyorum.'
+                : 'As a digital transformation expert, I help businesses grow with technology.'
+              }
+            </p>
           </div>
           
           <div>
