@@ -5,9 +5,11 @@ import { Textarea } from '@/components/ui/textarea';
 import { useEffect, useState } from 'react';
 import { Linkedin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+
 interface ContactSectionProps {
   language: 'tr' | 'en';
 }
+
 const ContactSection = ({
   language
 }: ContactSectionProps) => {
@@ -147,16 +149,16 @@ const ContactSection = ({
         {/* Section Header with Advanced Effects */}
         <div className="text-center mb-32 relative py-px">
           <div className="inline-block mb-8 relative">
-            <h2 className="text-8xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-pink-300 to-purple-400 tracking-tighter transform hover:scale-105 transition-transform duration-500 animate-hologram">
+            <h2 className="text-6xl md:text-7xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-pink-300 to-purple-400 tracking-tighter leading-tight transform hover:scale-105 transition-transform duration-500 animate-hologram">
               {content[language].title}
             </h2>
             {/* Electric Effect */}
-            <div className="absolute inset-0 text-8xl md:text-9xl font-black text-violet-400/30 transform animate-glitch py-0">
+            <div className="absolute inset-0 text-6xl md:text-7xl lg:text-8xl font-black text-violet-400/30 transform animate-glitch py-0">
               {content[language].title}
             </div>
             <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-64 h-3 bg-gradient-to-r from-violet-500 via-pink-500 to-purple-500 animate-gradient-shift blur-sm"></div>
           </div>
-          <p className="text-3xl md:text-4xl font-light text-violet-300 tracking-widest animate-fade-in delay-200 neon-purple">
+          <p className="text-2xl md:text-3xl lg:text-4xl font-light text-violet-300 tracking-widest animate-fade-in delay-200 neon-purple">
             {content[language].subtitle}
           </p>
         </div>
@@ -240,4 +242,5 @@ const ContactSection = ({
       <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-violet-500 to-transparent animate-pulse"></div>
     </section>;
 };
+
 export default ContactSection;
