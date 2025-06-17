@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, Zap, Target, Globe } from 'lucide-react';
@@ -12,8 +11,8 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
   const [isMounted, setIsMounted] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [matrixText, setMatrixText] = useState('');
-  const [typewriterText, setTypewriterText] = useState('');
+  const [titleText, setTitleText] = useState('');
+  const [subtitleText, setSubtitleText] = useState('');
   const [showSubtitle, setShowSubtitle] = useState(false);
 
   const content = {
@@ -59,46 +58,59 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
         })
         .join('');
 
-      setMatrixText(currentText);
+      setTitleText(currentText);
 
       if (iterations >= targetText.length) {
         clearInterval(matrixInterval);
-        // Start typewriter effect for subtitle after matrix completes
-        setTimeout(() => setShowSubtitle(true), 500);
+        // Start subtitle matrix effect after title completes with delay
+        setTimeout(() => setShowSubtitle(true), 800);
       }
 
-      iterations += 1 / 3;
-    }, 50);
+      iterations += 1 / 6; // Made slower by reducing increment
+    }, 100); // Made slower by increasing interval
 
     return () => clearInterval(matrixInterval);
   }, [language]);
 
-  // Typewriter effect for subtitle
+  // Matrix effect for subtitle
   useEffect(() => {
     if (!showSubtitle) {
-      setTypewriterText('');
+      setSubtitleText('');
       return;
     }
 
     const targetText = content[language].subtitle;
-    let currentIndex = 0;
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÇĞIİÖŞÜ0123456789!@#$%^&*()';
+    let currentText = '';
+    let iterations = 0;
 
-    const typewriterInterval = setInterval(() => {
-      setTypewriterText(targetText.slice(0, currentIndex));
-      currentIndex++;
+    const matrixInterval = setInterval(() => {
+      currentText = targetText
+        .split('')
+        .map((letter, index) => {
+          if (index < iterations) {
+            return targetText[index];
+          }
+          return characters[Math.floor(Math.random() * characters.length)];
+        })
+        .join('');
 
-      if (currentIndex > targetText.length) {
-        clearInterval(typewriterInterval);
+      setSubtitleText(currentText);
+
+      if (iterations >= targetText.length) {
+        clearInterval(matrixInterval);
       }
-    }, 100);
 
-    return () => clearInterval(typewriterInterval);
+      iterations += 1 / 6; // Made slower by reducing increment
+    }, 100); // Made slower by increasing interval
+
+    return () => clearInterval(matrixInterval);
   }, [showSubtitle, language]);
 
   // Reset animations when language changes
   useEffect(() => {
     setShowSubtitle(false);
-    setTypewriterText('');
+    setSubtitleText('');
   }, [language]);
 
   useEffect(() => {
@@ -169,21 +181,21 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
             {/* Main Title with Matrix Effect */}
             <div className="relative mb-4">
               <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none font-display">
-                {matrixText}
+                {titleText}
               </h1>
               <div className="absolute inset-0 text-6xl md:text-8xl font-black text-cyan-400/30 transform blur-sm animate-pulse font-display">
-                {matrixText}
+                {titleText}
               </div>
             </div>
 
-            {/* Subtitle with Typewriter Effect and Transform Animation */}
+            {/* Subtitle with Matrix Effect */}
             <div className="relative mb-8 h-20 overflow-hidden">
               {showSubtitle && (
-                <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none font-display transform transition-all duration-1000 animate-fade-in">
-                  <span className="inline-block transform transition-all duration-300 hover:scale-110 hover:rotate-3">
-                    {typewriterText}
-                  </span>
-                  <span className="inline-block w-1 h-12 bg-cyan-400 ml-2 animate-pulse"></span>
+                <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none font-display">
+                  {subtitleText}
+                  <div className="absolute inset-0 text-4xl md:text-5xl font-black text-purple-400/30 transform blur-sm animate-pulse font-display">
+                    {subtitleText}
+                  </div>
                 </h2>
               )}
             </div>
