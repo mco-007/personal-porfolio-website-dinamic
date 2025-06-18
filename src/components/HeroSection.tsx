@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, Zap, Target, Globe } from 'lucide-react';
@@ -11,9 +12,9 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
   const [isMounted, setIsMounted] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [titleText, setTitleText] = useState('');
-  const [subtitleText, setSubtitleText] = useState('');
+  const [showTitle, setShowTitle] = useState(false);
   const [showSubtitle, setShowSubtitle] = useState(false);
+  const [glitchActive, setGlitchActive] = useState(false);
 
   const content = {
     tr: {
@@ -40,77 +41,27 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
     }
   };
 
-  // Matrix effect for main title
+  // Spherical blur effect for main title
   useEffect(() => {
-    const targetText = content[language].title;
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÇĞIİÖŞÜ0123456789!@#$%^&*()';
-    let currentText = '';
-    let iterations = 0;
+    const timer = setTimeout(() => {
+      setShowTitle(true);
+      // Start subtitle glitch effect after title appears
+      setTimeout(() => {
+        setShowSubtitle(true);
+        setGlitchActive(true);
+        // Stop glitch after animation
+        setTimeout(() => setGlitchActive(false), 2000);
+      }, 1000);
+    }, 500);
 
-    const matrixInterval = setInterval(() => {
-      currentText = targetText
-        .split('')
-        .map((letter, index) => {
-          if (index < iterations) {
-            return targetText[index];
-          }
-          return characters[Math.floor(Math.random() * characters.length)];
-        })
-        .join('');
-
-      setTitleText(currentText);
-
-      if (iterations >= targetText.length) {
-        clearInterval(matrixInterval);
-        // Start subtitle matrix effect after title completes with delay
-        setTimeout(() => setShowSubtitle(true), 800);
-      }
-
-      iterations += 1 / 6; // Made slower by reducing increment
-    }, 100); // Made slower by increasing interval
-
-    return () => clearInterval(matrixInterval);
+    return () => clearTimeout(timer);
   }, [language]);
-
-  // Matrix effect for subtitle
-  useEffect(() => {
-    if (!showSubtitle) {
-      setSubtitleText('');
-      return;
-    }
-
-    const targetText = content[language].subtitle;
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÇĞIİÖŞÜ0123456789!@#$%^&*()';
-    let currentText = '';
-    let iterations = 0;
-
-    const matrixInterval = setInterval(() => {
-      currentText = targetText
-        .split('')
-        .map((letter, index) => {
-          if (index < iterations) {
-            return targetText[index];
-          }
-          return characters[Math.floor(Math.random() * characters.length)];
-        })
-        .join('');
-
-      setSubtitleText(currentText);
-
-      if (iterations >= targetText.length) {
-        clearInterval(matrixInterval);
-      }
-
-      iterations += 1 / 6; // Made slower by reducing increment
-    }, 100); // Made slower by increasing interval
-
-    return () => clearInterval(matrixInterval);
-  }, [showSubtitle, language]);
 
   // Reset animations when language changes
   useEffect(() => {
+    setShowTitle(false);
     setShowSubtitle(false);
-    setSubtitleText('');
+    setGlitchActive(false);
   }, [language]);
 
   useEffect(() => {
@@ -178,25 +129,49 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
         <div className="flex flex-col lg:flex-row items-center justify-between min-h-screen py-20 gap-16">
           {/* Left Content */}
           <div className="lg:w-1/2 text-center lg:text-left">
-            {/* Main Title with Matrix Effect */}
-            <div className="relative mb-4">
-              <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none font-display">
-                {titleText}
+            {/* Main Title with Spherical Blur Effect */}
+            <div className="relative mb-4 h-24 overflow-hidden">
+              <h1 className={`text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none font-display transition-all duration-1000 ${
+                showTitle 
+                  ? 'opacity-100 blur-0 transform translate-y-0' 
+                  : 'opacity-0 blur-2xl transform translate-y-8'
+              }`}>
+                {content[language].title}
               </h1>
-              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-cyan-400/30 transform blur-sm animate-pulse font-display">
-                {titleText}
+              {/* Spherical blur shadow */}
+              <div className={`absolute inset-0 text-5xl md:text-7xl font-black text-cyan-400/30 transform blur-md transition-all duration-1000 ${
+                showTitle ? 'opacity-100' : 'opacity-0'
+              }`}>
+                {content[language].title}
               </div>
             </div>
 
-            {/* Subtitle with Matrix Effect */}
+            {/* Subtitle with Glitch Effect */}
             <div className="relative mb-8 h-20 overflow-hidden">
               {showSubtitle && (
-                <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none font-display">
-                  {subtitleText}
-                  <div className="absolute inset-0 text-4xl md:text-5xl font-black text-purple-400/30 transform blur-sm animate-pulse font-display">
-                    {subtitleText}
-                  </div>
-                </h2>
+                <>
+                  <h2 className={`text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none font-display ${
+                    glitchActive ? 'animate-pulse' : ''
+                  }`}
+                  style={{
+                    textShadow: glitchActive ? '2px 0 0 #ff0000, -2px 0 0 #00ffff' : 'none',
+                    animation: glitchActive ? 'glitch 0.3s infinite' : 'none'
+                  }}>
+                    {content[language].subtitle}
+                  </h2>
+                  
+                  {/* Glitch layers */}
+                  {glitchActive && (
+                    <>
+                      <div className="absolute inset-0 text-3xl md:text-5xl font-black text-red-500/70 transform translate-x-1 animate-pulse font-display">
+                        {content[language].subtitle}
+                      </div>
+                      <div className="absolute inset-0 text-3xl md:text-5xl font-black text-cyan-500/70 transform -translate-x-1 animate-pulse font-display">
+                        {content[language].subtitle}
+                      </div>
+                    </>
+                  )}
+                </>
               )}
             </div>
             
@@ -290,6 +265,16 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
       {/* Section Transition Effect */}
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-gray-900 to-transparent"></div>
       <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-cyan-500 to-transparent animate-pulse"></div>
+
+      <style jsx>{`
+        @keyframes glitch {
+          0%, 100% { transform: translate(0); }
+          20% { transform: translate(-2px, 2px); }
+          40% { transform: translate(-2px, -2px); }
+          60% { transform: translate(2px, 2px); }
+          80% { transform: translate(2px, -2px); }
+        }
+      `}</style>
     </section>
   );
 };
