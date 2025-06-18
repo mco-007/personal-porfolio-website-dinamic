@@ -150,13 +150,15 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
             <div className="relative mb-8 h-20 overflow-hidden">
               {showSubtitle && (
                 <>
-                  <h2 className={`text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none font-display ${
-                    glitchActive ? 'animate-pulse' : ''
-                  }`}
-                  style={{
-                    textShadow: glitchActive ? '2px 0 0 #ff0000, -2px 0 0 #00ffff' : 'none',
-                    animation: glitchActive ? 'glitch 0.3s infinite' : 'none'
-                  }}>
+                  <h2 
+                    className={`text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-400 tracking-tighter leading-none font-display ${
+                      glitchActive ? 'animate-pulse' : ''
+                    }`}
+                    style={{
+                      textShadow: glitchActive ? '2px 0 0 #ff0000, -2px 0 0 #00ffff' : 'none',
+                      animation: glitchActive ? 'glitch 0.3s infinite' : 'none'
+                    }}
+                  >
                     {content[language].subtitle}
                   </h2>
                   
@@ -265,16 +267,6 @@ const HeroSection = ({ language, setLanguage }: HeroSectionProps) => {
       {/* Section Transition Effect */}
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-gray-900 to-transparent"></div>
       <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-cyan-500 to-transparent animate-pulse"></div>
-
-      <style jsx>{`
-        @keyframes glitch {
-          0%, 100% { transform: translate(0); }
-          20% { transform: translate(-2px, 2px); }
-          40% { transform: translate(-2px, -2px); }
-          60% { transform: translate(2px, 2px); }
-          80% { transform: translate(2px, -2px); }
-        }
-      `}</style>
     </section>
   );
 };
