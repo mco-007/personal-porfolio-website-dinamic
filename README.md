@@ -1,4 +1,5 @@
-# Welcome to your Lovable project
+
+# Mücahit Özcan - Digital Transformation Expert
 
 ## Project info
 
@@ -36,19 +37,14 @@ npm i
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Environment Variables
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Before deploying, make sure to set up your environment variables:
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Copy `.env.example` to `.env`
+2. Fill in your Supabase credentials:
+   - `VITE_SUPABASE_URL`: Your Supabase project URL
+   - `VITE_SUPABASE_ANON_KEY`: Your Supabase anonymous key
 
 ## What technologies are used for this project?
 
@@ -59,8 +55,24 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
+- Supabase
 
 ## How can I deploy this project?
+
+### Deploy with Vercel
+
+1. Connect your GitHub repository to Vercel
+2. Set up environment variables in Vercel dashboard
+3. Deploy automatically on every push
+
+### Deploy with Netlify
+
+1. Connect your GitHub repository to Netlify
+2. Set build command: `npm run build`
+3. Set publish directory: `dist`
+4. Set up environment variables in Netlify dashboard
+
+### Deploy with Lovable
 
 Simply open [Lovable](https://lovable.dev/projects/3b0d08b2-feb2-4adb-8dbd-1a5839ba36ea) and click on Share -> Publish.
 
