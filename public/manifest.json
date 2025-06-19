@@ -1,0 +1,17 @@
+
+{
+  "name": "Mücahit Özcan - Portfolio",
+  "short_name": "MO Portfolio",
+  "description": "Personal portfolio of Mücahit Özcan - Digital Transformation Expert",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#06b6d4",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}
